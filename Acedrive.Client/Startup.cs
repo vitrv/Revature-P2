@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Acedrive.Client.Models;
+using Acedrive.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Acedrive.Client
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
+            
             Configuration = configuration;
         }
 
@@ -31,7 +36,7 @@ namespace Acedrive.Client
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.Configure<ConnectionString>(Configuration.GetSection("ConnectionString"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

@@ -8,6 +8,7 @@
     <ProjectReference Include="..\Acedrive.Domain\Acedrive.Domain.csproj" />
   </ItemGroup>
 
+
   <ItemGroup>
     <PackageReference Include="microsoft.entityframeworkcore" Version="2.2.6" />
     <PackageReference Include="microsoft.entityframeworkcore.design" Version="2.2.6" />

@@ -6,5 +6,10 @@ namespace Acedrive.Domain.Models
     {
       
     }
+
+    public Location CreateNewLocation()
+    {
+      return null;
+    }
   }
 }
