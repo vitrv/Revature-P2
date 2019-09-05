@@ -1,8 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\Acedrive.Data\Acedrive.Data.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="microsoft.entityframeworkcore" Version="2.2.6" />
