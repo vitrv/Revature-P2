@@ -1,18 +1,10 @@
 namespace Acedrive.Domain.Models
 {
-  public partial class VehicleType
-  {
-   public int VehicleTypeID { get; set; } 
-   public string Manufacturer {get; set;}
-   public string Model {get; set;}
-
-   public int Year {get; set;}
-
-   public int GasCapacity {get; set;}
-
-   public int FuelEfficiency {get; set; }
-
-
-
-  }
+    public class VehicleType
+    {
+      public int VehicleTypeId { get; set; }
+      public string VehicleTypeName { get; set; }
+      public decimal VehicleTypeCostPerDay { get; set; }
+        
+    }
 }
