@@ -12,7 +12,5 @@ namespace Acedrive.Domain.Models
 
    public int FuelEfficiency {get; set; }
 
-
-
   }
 }
