@@ -1,16 +1,16 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace Acedrive.Domain.Models
 {
-  public partial class VehicleType
+  public class VehicleType
   {
-   public int VehicleTypeID { get; set; } 
-   public string Manufacturer {get; set;}
-   public string Model {get; set;}
+    [Key]
+    public int VehicleTypeId { get; set; }
+    public string VehicleTypeName { get; set; }
+    [DataType(DataType.Currency)]
+    public decimal VehicleTypeCostPerDay { get; set; }
 
-   public int Year {get; set;}
-
-   public int GasCapacity {get; set;}
-
-   public int FuelEfficiency {get; set; }
-
+    public ICollection<Vehicle> Vehicles { get; set; }
   }
 }

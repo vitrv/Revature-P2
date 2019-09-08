@@ -1,10 +1,11 @@
-namespace Acedrive.Domain.Models
+namespace Acedrive.Domain
 {
-  public partial class VehicleType
-  {
-    public VehicleType()
+    public partial class VehicleType
     {
-      
+      public VehicleType()
+      {
+
+      }
+        
     }
-  }
 }
