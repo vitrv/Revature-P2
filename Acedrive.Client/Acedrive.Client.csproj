@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Acedrive.Domain\Acedrive.Domain.csproj" />
+    <ProjectReference Include="..\Acedrive.Data\Acedrive.Data.csproj" />
   </ItemGroup>
 
 </Project>
