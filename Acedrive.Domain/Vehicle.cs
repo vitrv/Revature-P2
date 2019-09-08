@@ -1,8 +1,8 @@
 namespace Acedrive.Domain.Models
 {
-  public partial class VehicleModel
+  public partial class Vehicle
   {
-    public VehicleModel()
+    public Vehicle()
     {
       
     }
