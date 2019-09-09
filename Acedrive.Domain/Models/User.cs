@@ -18,7 +18,7 @@ namespace Acedrive.Domain.Models
     public string UserZipcode { get; set; }
     public string UserDriverLicense { get; set; }
 
-    [DataType(DataType.Date)]
+    //[DataType(DataType.Date)]
     public DateTime UserDOB { get; set; }
     [EmailAddress]
     public string UserEmail { get; set; }

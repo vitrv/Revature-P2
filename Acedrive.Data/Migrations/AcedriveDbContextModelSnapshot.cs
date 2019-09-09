@@ -46,7 +46,8 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<decimal>("PaymentAmount");
 
-                    b.Property<int>("PaymentDate");
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("date");
 
                     b.Property<int>("RentalRefId");
 
@@ -63,11 +64,13 @@ namespace Acedrive.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EndDate");
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("date");
 
                     b.Property<int>("LocationRefId");
 
-                    b.Property<int>("StartDate");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("date");
 
                     b.Property<int>("UserRefId");
 
@@ -103,7 +106,8 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<string>("UserCity");
 
-                    b.Property<DateTime>("UserDOB");
+                    b.Property<DateTime>("UserDOB")
+                        .HasColumnType("date");
 
                     b.Property<string>("UserDriverLicense");
 
