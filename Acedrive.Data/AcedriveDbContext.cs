@@ -48,6 +48,22 @@ namespace Acedrive.Data
       .WithMany(r =>r.Payments)
       .HasForeignKey(p => p.RentalRefId);
 
+      builder.Entity<User>()
+      .Property(u => u.UserDOB)
+      .HasColumnType("date");
+
+      builder.Entity<Payment>()
+      .Property(p => p.PaymentDate)
+      .HasColumnType("date");
+
+      builder.Entity<Rental>()
+      .Property(r => r.StartDate)
+      .HasColumnType("date");
+
+      builder.Entity<Rental>()
+      .Property(r => r.EndDate)
+      .HasColumnType("date");
+
 
       
 

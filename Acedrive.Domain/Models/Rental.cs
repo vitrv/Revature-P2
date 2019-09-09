@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,10 +8,10 @@ namespace Acedrive.Domain.Models
   {
     [Key]
     public int RentalId { get; set; }
-    [DataType(DataType.Date)]
-    public int StartDate { get; set; }
-    [DataType(DataType.Date)]
-    public int EndDate {get; set; }
+    //[DataType(DataType.Date)]
+    public DateTime StartDate { get; set; }
+    //[DataType(DataType.Date)]
+    public DateTime EndDate {get; set; }
     public int UserRefId { get; set; }
     public User UId { get; set; }
     public int LocationRefId { get; set; }
