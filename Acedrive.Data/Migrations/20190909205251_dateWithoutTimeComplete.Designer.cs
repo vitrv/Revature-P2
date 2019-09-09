@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Acedrive.Data.Migrations
 {
     [DbContext(typeof(AcedriveDbContext))]
-    [Migration("20190908140833_datatables1")]
-    partial class datatables1
+    [Migration("20190909205251_dateWithoutTimeComplete")]
+    partial class dateWithoutTimeComplete
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,11 +48,14 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<decimal>("PaymentAmount");
 
-                    b.Property<int>("RentalId");
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("date");
 
-                    b.Property<int>("UserId");
+                    b.Property<int>("RentalRefId");
 
                     b.HasKey("PaymentId");
+
+                    b.HasIndex("RentalRefId");
 
                     b.ToTable("Payments");
                 });
@@ -63,18 +66,28 @@ namespace Acedrive.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EndDate");
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("date");
 
-                    b.Property<int>("StartDate");
+                    b.Property<int>("LocationRefId");
 
-                    b.Property<int>("UserId");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("date");
 
-                    b.Property<int>("VehicleId");
+                    b.Property<int>("UserRefId");
+
+                    b.Property<int>("VehicleRefId");
 
                     b.Property<string>("VehicleStatus")
                         .HasMaxLength(1);
 
                     b.HasKey("RentalId");
+
+                    b.HasIndex("LocationRefId");
+
+                    b.HasIndex("UserRefId");
+
+                    b.HasIndex("VehicleRefId");
 
                     b.ToTable("Rentals");
                 });
@@ -95,7 +108,8 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<string>("UserCity");
 
-                    b.Property<DateTime>("UserDOB");
+                    b.Property<DateTime>("UserDOB")
+                        .HasColumnType("date");
 
                     b.Property<string>("UserDriverLicense");
 
@@ -152,9 +166,35 @@ namespace Acedrive.Data.Migrations
                     b.ToTable("VehicleTypes");
                 });
 
+            modelBuilder.Entity("Acedrive.Domain.Models.Payment", b =>
+                {
+                    b.HasOne("Acedrive.Domain.Models.Rental", "RentId")
+                        .WithMany("Payments")
+                        .HasForeignKey("RentalRefId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Acedrive.Domain.Models.Rental", b =>
+                {
+                    b.HasOne("Acedrive.Domain.Models.Location", "LocId")
+                        .WithMany("Rentals")
+                        .HasForeignKey("LocationRefId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Acedrive.Domain.Models.User", "UId")
+                        .WithMany("Rentals")
+                        .HasForeignKey("UserRefId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Acedrive.Domain.Models.Vehicle", "VehId")
+                        .WithMany("Rentals")
+                        .HasForeignKey("VehicleRefId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Acedrive.Domain.Models.Vehicle", b =>
                 {
-                    b.HasOne("Acedrive.Domain.Models.VehicleType", "VehType")
+                    b.HasOne("Acedrive.Domain.Models.VehicleType", "VehTypeId")
                         .WithMany("Vehicles")
                         .HasForeignKey("VehicleTypeRefId")
                         .OnDelete(DeleteBehavior.Cascade);
