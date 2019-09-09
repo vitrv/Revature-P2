@@ -1,3 +1,5 @@
+using Acedrive.Domain.Models;
+
 namespace Acedrive.Domain
 {
   public class SessionHandler
@@ -18,7 +20,42 @@ namespace Acedrive.Domain
     {
 
     }
+    User _user;
+    Location _location;
+    TimeRange _tr;
 
+    public void LoginUser()
+    {
+
+    }
+    public void LogoutUser()
+    {
+
+    }
+    public void SelectLocation()
+    {
+
+    }
+    public void SelectTime()
+    {
+
+    }
+    public List<Vehicle> SearchVehicles()
+    {
+
+    }
+    public void SelectVehicle()
+    {
+
+    }
+    public Rental ViewRental()
+    {
+      return null;
+    }
+    public Rental ConfirmRental()
+    {
+      return null;
+    }
 
   }
 }
