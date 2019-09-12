@@ -91,7 +91,5 @@ trigger:
     include:
     - master
 
-variables:
-  sonar: '0c496d872b3508eb3fee36a26d6a6f8f93fbd2ae'
 
 
