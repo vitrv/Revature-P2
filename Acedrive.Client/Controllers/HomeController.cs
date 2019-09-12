@@ -6,25 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Acedrive.Client.Models;
 using Microsoft.Extensions.Options;
+using Acedrive.Domain.Models;
 
 namespace Acedrive.Client.Controllers
 {
-    
+
     public class HomeController : Controller
     {
-        private readonly ConnectionString _cs;
-        public HomeController(IOptions<ConnectionString> ConnectionString)
-        {      
-          _cs = ConnectionString.Value ?? throw new ArgumentException(nameof(ConnectionString));
-        }
-
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Content($"Connection string: {_cs.Secret}");
-        }
+        Session _session = SessionHandler.Instance();
         public IActionResult Index()
         {
+          //retrieve list of all cars in db with
+          List<Vehicle> vehicles = _session.GetAllVehicles();
             return View();
         }
 

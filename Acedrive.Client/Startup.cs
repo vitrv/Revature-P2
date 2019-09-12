@@ -36,7 +36,8 @@ namespace Acedrive.Client
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.Configure<ConnectionString>(Configuration.GetSection("ConnectionString"));
+            string _connectionString = Configuration["ConnectionString:Secret"];
+            SessionHandler.InstanceInit(_connectionString);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
