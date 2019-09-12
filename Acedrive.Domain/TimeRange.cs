@@ -1,6 +1,6 @@
 namespace Acedrive.Domain
 {
-  internal class TimeRange
+  public class TimeRange
   {
   }
 }

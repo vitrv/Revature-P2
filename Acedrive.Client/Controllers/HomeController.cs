@@ -12,17 +12,6 @@ namespace Acedrive.Client.Controllers
     
     public class HomeController : Controller
     {
-        private readonly ConnectionString _cs;
-        public HomeController(IOptions<ConnectionString> ConnectionString)
-        {      
-          _cs = ConnectionString.Value ?? throw new ArgumentException(nameof(ConnectionString));
-        }
-
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Content($"Connection string: {_cs.Secret}");
-        }
         public IActionResult Index()
         {
             return View();

@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using Acedrive.Data;
+using Acedrive.Domain;
 using Acedrive.Domain.Models;
 
-namespace Acedrive.Domain
+namespace Acedrive.Client
 {
   public class SessionHandler
   {
@@ -19,12 +21,18 @@ namespace Acedrive.Domain
   {
     internal Session()
     {
-
+      _data = new DataAccess();
     }
     User _user;
     Location _location;
     TimeRange _tr;
 
+    DataAccess _data;
+
+    public void RegisterUser()
+    {
+
+    }
     public void LoginUser()
     {
 
@@ -57,6 +65,12 @@ namespace Acedrive.Domain
     {
       return null;
     }
+    public void RegisterVehicleType()
+    {
+      Domain.Models.VehicleType vt = new Domain.Models.VehicleType();
+
+    }
+
 
   }
 }
