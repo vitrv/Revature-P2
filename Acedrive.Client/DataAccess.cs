@@ -9,11 +9,10 @@ namespace Acedrive.Client
   public class DataAccess
   {
     AcedriveDbContext _db;
-    private readonly ConnectionString _cs;
-    public DataAccess(IOptions<ConnectionString> ConnectionString)
+    public DataAccess(string secret)
     {      
-      _cs = ConnectionString.Value ?? throw new ArgumentException(nameof(ConnectionString));
-      _db = new AcedriveDbContext(_cs.Secret);
+      _db = new AcedriveDbContext(secret);
+      System.Console.WriteLine(secret);
     }
     
     public void AddUser(User u)
