@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Acedrive.Domain.Models
 {
-  public class VehicleType
+  public partial class VehicleType
   {
     [Key]
     public int VehicleTypeId { get; set; }
