@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Acedrive.Client.Models;
 using Acedrive.Data;
 using Acedrive.Domain.Models;
@@ -22,6 +24,11 @@ namespace Acedrive.Client
     public void AddVehicleType(VehicleType vt)
     {
       
+    }
+
+    internal List<Vehicle> GetAllVehicles()
+    {
+      return _db.Vehicles.ToList();
     }
   }
     

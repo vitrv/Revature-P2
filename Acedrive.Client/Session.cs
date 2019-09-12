@@ -79,6 +79,11 @@ namespace Acedrive.Client
 
     }
 
+    public List<Vehicle> GetAllVehicles()
+    {
+      return _data.GetAllVehicles();
+    }
+
 
   }
 }
