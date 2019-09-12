@@ -3,15 +3,95 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-trigger:
-- master
+# devopsworld - pipline
 
-pool:
-  vmImage: 'ubuntu-latest'
+name: $(date:yyyyMMdd)$(rev:.rr)
+
+stages:
+  - stage: 'build'
+    condition: succeeded()
+    displayName: 'build-mvc'
+    jobs:
+      - job:
+        condition: succeeded()
+        displayName: 'build-process'
+        pool:
+          vmImage: 'ubuntu-16.04'
+        steps:
+          - task: UseDotNet@2
+            displayName: 'dotnet installer'
+            inputs:
+              version: '2.2.401'
+          - script: |
+              dotnet build
+
+  - stage: 'test'
+    condition: succeeded()
+    displayName: 'test-mvc'
+    jobs:
+      - job:
+        condition: succeeded()
+        displayName: 'test-process'
+        pool:
+          vmImage: 'ubuntu-16.04'
+        steps:
+          - task: UseDotNet@2
+            displayName: 'dotnet installer'
+            inputs:
+              version: '2.2.401'
+          - script: |
+              dotnet tool install --global dotnet-sonarscanner
+              dotnet sonarscanner begin /k:"devopsworld" /o:"vitrv" /d:sonar.login="0c496d872b3508eb3fee36a26d6a6f8f93fbd2ae" /d:sonar.host.url="https://sonarcloud.io"
+              dotnet build
+              dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=\"cobertura,opencover\" /p:Exclude=[xunit*]*
+              dotnet sonarscanner end /d:sonar.login="0c496d872b3508eb3fee36a26d6a6f8f93fbd2ae" 
+          - task: PublishTestResults@2
+            displayName: 'publish result::unit-test'
+            inputs:
+              testRunner: VSTest
+              testResultsFiles: '**/*.trx'
+          - task: PublishCodeCoverageResults@1
+            displayName: 'publish result::code-coverage'
+            inputs:
+              codeCoverageTool: cobertura
+              summaryFileLocation: '**/coverage.cobertura.xml'
+
+  - stage: 'pack'
+    condition: succeeded()
+    dependsOn:
+      - test
+    displayName: 'pack-mvc'
+    jobs:
+      - job:
+        condition: succeeded()
+        displayName: 'pack-process'
+        pool:
+          vmImage: 'ubuntu-16.04'
+        steps:
+          - script: |
+              dotnet publish 
+
+  - stage: 'deploy'
+    condition: succeeded()
+    dependsOn:
+      - test
+    displayName: 'deploy-mvc'
+    jobs:
+      - job:
+        condition: succeeded()
+        displayName: 'deploy-process'
+        pool:
+          vmImage: 'ubuntu-16.04'
+        steps:
+          - script: |
+              echo 'working ont'
+
+trigger:
+  branches:
+    include:
+    - master
 
 variables:
-  buildConfiguration: 'Release'
+  sonar: '0c496d872b3508eb3fee36a26d6a6f8f93fbd2ae'
 
-steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+
