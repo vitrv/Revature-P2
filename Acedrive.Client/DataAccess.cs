@@ -12,7 +12,6 @@ namespace Acedrive.Client
     public DataAccess(string secret)
     {      
       _db = new AcedriveDbContext(secret);
-      System.Console.WriteLine(secret);
     }
     
     public void AddUser(User u)
