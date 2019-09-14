@@ -20,8 +20,5 @@ namespace Acedrive.Domain.Models
     //public int FuelEfficiency {get; set; }
     
     public ICollection<Rental> Rentals { get; set; }
-
-
-
   }
 }

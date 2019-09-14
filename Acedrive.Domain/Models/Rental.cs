@@ -20,8 +20,6 @@ namespace Acedrive.Domain.Models
     public Vehicle VehId { get; set; }
     [MaxLength(1)]
     public string VehicleStatus { get; set; }
-
     public ICollection<Payment> Payments { get; set; }
-
   }
 }

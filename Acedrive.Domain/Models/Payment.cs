@@ -14,9 +14,5 @@ namespace Acedrive.Domain.Models
     public DateTime PaymentDate {get; set; }
     [DataType(DataType.Currency)]
     public decimal PaymentAmount { get; set; }
-
-    
-
-      
   }
 }

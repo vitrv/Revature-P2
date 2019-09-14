@@ -27,56 +27,62 @@ namespace Acedrive.Client
   }
   public class Session
   {
+    DataAccess _data;
     internal Session(string secret)
     {
       _data = new DataAccess(secret);
     }
     User _user;
     Location _location;
-    TimeRange _tr;
-
-    DataAccess _data;
 
     public void RegisterUser()
     {
 
     }
+
     public void LoginUser()
     {
 
     }
+
     public void LogoutUser()
     {
 
     }
+
     public void SelectLocation()
     {
 
     }
+
     public void SelectTime()
     {
 
     }
+
     public List<Vehicle> SearchVehicles()
     {
       return null;
     }
+
     public void SelectVehicle()
     {
 
     }
+
     public Rental ViewRental()
     {
       return null;
     }
+
     public Rental ConfirmRental()
     {
       return null;
     }
+
     public void RegisterVehicleType()
     {
       Domain.Models.VehicleType vt = new Domain.Models.VehicleType();
-
     }
 
     public List<Vehicle> GetAllVehicles()
@@ -84,6 +90,13 @@ namespace Acedrive.Client
       return _data.GetAllVehicles();
     }
 
+    public List<VehicleType> GetAllVehicleTypes()
+    {
+      return _data.GetAllVehicleTypes();
+    }
 
+    public VehicleType SelectedVehicleType(int id) {
+      return _data.VehicleTypeSelector(id);
+    }
   }
 }
