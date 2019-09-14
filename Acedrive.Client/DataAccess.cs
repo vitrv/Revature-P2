@@ -25,9 +25,19 @@ namespace Acedrive.Client
       
     }
 
-    internal List<Vehicle> GetAllVehicles()
+    internal void SavetoVehicles(Vehicle v) {
+      _db.Add(v);
+      _db.SaveChanges();
+    }
+
+    internal void SavetoVehicleTypes(VehicleType vt) {
+      _db.Add(vt);
+      _db.SaveChanges();
+    }
+
+    internal List<Vehicle> GetAllVehicles(int id)
     {
-      return _db.Vehicles.ToList();
+      return _db.Vehicles.Where(v => v.VehicleTypeRefId == id).ToList();
     }
     
     internal List<VehicleType> GetAllVehicleTypes()
@@ -35,9 +45,12 @@ namespace Acedrive.Client
       return _db.VehicleTypes.ToList();
     }
 
-    public VehicleType VehicleTypeSelector(int id) {
+    internal Vehicle VehicleSelector(int id) {
+      return _db.Vehicles.FirstOrDefault(v => v.VehicleId == id);
+    }
+
+    internal VehicleType VehicleTypeSelector(int id) {
       return _db.VehicleTypes.FirstOrDefault(vt => vt.VehicleTypeId == id);
     }
   }
-    
 }
