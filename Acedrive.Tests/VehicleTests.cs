@@ -14,7 +14,10 @@ namespace Acedrive.Tests
       decimal expectedvtypeprice = 20M;
 
       // Act
-      VehicleType vtype = new VehicleType();
+      VehicleType vtype = new VehicleType { 
+        VehicleTypeName = "Sedan", 
+        VehicleTypeCostPerDay = 20M
+      };
       string actualvtypename = vtype.VehicleTypeName;
       decimal actualvtypeprice = vtype.VehicleTypeCostPerDay;
 

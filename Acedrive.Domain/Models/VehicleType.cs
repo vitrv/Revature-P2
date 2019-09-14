@@ -6,6 +6,7 @@ namespace Acedrive.Domain.Models
   public partial class VehicleType
   {
     [Key]
+    [Required (ErrorMessage = "You Need to Select a Vehicle Type Before Proceeding.")]
     public int VehicleTypeId { get; set; }
     public string VehicleTypeName { get; set; }
     [DataType(DataType.Currency)]

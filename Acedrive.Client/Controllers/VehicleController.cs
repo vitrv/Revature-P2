@@ -28,7 +28,6 @@ namespace Acedrive.Client.Controllers
         var result = _session.SelectedVehicleType(vtid);
         return Content($"You ordered a {result.VehicleTypeName} which will be {result.VehicleTypeCostPerDay} per Day. Is this correct?");
       }
-
       return View();
     }
   }   
