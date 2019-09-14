@@ -85,17 +85,29 @@ namespace Acedrive.Client
       Domain.Models.VehicleType vt = new Domain.Models.VehicleType();
     }
 
-    public List<Vehicle> GetAllVehicles()
-    {
-      return _data.GetAllVehicles();
+    internal void SaveV(Vehicle v) {
+      _data.SavetoVehicles(v);
     }
 
-    public List<VehicleType> GetAllVehicleTypes()
+    internal void SaveVT(VehicleType vt) {
+      _data.SavetoVehicleTypes(vt);
+    }
+
+    internal List<Vehicle> GetVehicles(int id)
+    {
+      return _data.GetAllVehicles(id);
+    }
+
+    internal List<VehicleType> GetVehicleTypes()
     {
       return _data.GetAllVehicleTypes();
     }
 
-    public VehicleType SelectedVehicleType(int id) {
+    internal Vehicle SelectedVehicle(int id) {
+      return _data.VehicleSelector(id);
+    }
+
+    internal VehicleType SelectedVehicleType(int id) {
       return _data.VehicleTypeSelector(id);
     }
   }
