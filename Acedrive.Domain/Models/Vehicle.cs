@@ -7,6 +7,7 @@ namespace Acedrive.Domain.Models
   public partial class Vehicle
   {
     [Key]
+    [Required]
     public int VehicleId { get; set; }
     public int VehicleTypeRefId { get; set; } 
     public VehicleType VehTypeId {get; set; }
