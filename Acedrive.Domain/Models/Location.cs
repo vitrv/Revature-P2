@@ -11,9 +11,6 @@ namespace Acedrive.Domain.Models
     public string LocationCity { get; set; }
     public string LocationState { get; set; }
     public string LocationZipcode { get; set; }
-
     public ICollection<Rental> Rentals { get; set; }
-
   }
-
 }

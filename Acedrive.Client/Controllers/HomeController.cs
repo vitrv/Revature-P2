@@ -10,26 +10,25 @@ using Acedrive.Domain.Models;
 
 namespace Acedrive.Client.Controllers
 {
-
     public class HomeController : Controller
     {
-        Session _session = SessionHandler.Instance();
-        public IActionResult Index()
-        {
-          //retrieve list of all cars in db with
-          List<Vehicle> vehicles = _session.GetAllVehicles();
-            return View();
-        }
+      Session _session = SessionHandler.Instance();
+      public IActionResult Index()
+      {
+        //retrieve list of all cars in db with
+        List<VehicleType> vehicles = _session.GetAllVehicleTypes();
+          return View();
+      }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+      public IActionResult Privacy()
+      {
+          return View();
+      }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+      [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+      public IActionResult Error()
+      {
+          return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+      }
     }
 }

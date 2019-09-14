@@ -25,10 +25,6 @@ namespace Acedrive.Domain.Models
     [Phone]
     public string UserPhoneNumber {get; set; }
     public bool IsInsured { get; set; }
-
     public ICollection<Rental> Rentals { get; set; }
-
-
-
   }
 }

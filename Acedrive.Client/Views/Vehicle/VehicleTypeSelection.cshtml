@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "AceDrive - Vehicle Selection";
+}
+
+@model List<Acedrive.Domain.Models.VehicleType>
+
+<form asp-controller="Vehicle" asp-action="VehicleTypeSelection" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Please Choose Your Preferred Type of Vehicle.</h5><br />
+
+  <table class = "table table-bordered text-center" >
+    <thead class = "thead-dark">
+      <tr>
+        <th>Choose Only One</th>
+        <th>Vehicle Type</th>
+        <th>Price (Charged Per Day)</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      @foreach (var item in Model) {
+        <tr>
+          <td><input type = "radio" name = "vtid" value = "@item.VehicleTypeId" /></td>
+          <td>@item.VehicleTypeName</td>
+          <td>$@item.VehicleTypeCostPerDay</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <br>
+  <button type="submit">Continue to Next Step</button>
+  
+</form>

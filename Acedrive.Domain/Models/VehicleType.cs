@@ -10,7 +10,6 @@ namespace Acedrive.Domain.Models
     public string VehicleTypeName { get; set; }
     [DataType(DataType.Currency)]
     public decimal VehicleTypeCostPerDay { get; set; }
-
     public ICollection<Vehicle> Vehicles { get; set; }
   }
 }

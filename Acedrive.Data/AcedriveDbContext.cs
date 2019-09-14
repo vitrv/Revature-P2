@@ -5,12 +5,10 @@ namespace Acedrive.Data
   public class AcedriveDbContext: DbContext
   {
     private string secret;
-
     public AcedriveDbContext(string secret)
     {
       this.secret = secret;
     }
-
     public DbSet<Location>Locations {get; set;}
     public DbSet<Vehicle>Vehicles { get; set; }
     public DbSet<Rental>Rentals {get;set;}
@@ -67,14 +65,6 @@ namespace Acedrive.Data
       builder.Entity<Rental>()
       .Property(r => r.EndDate)
       .HasColumnType("date");
-
-
-      
-
-
-
-
     }
-    
   }
 }
