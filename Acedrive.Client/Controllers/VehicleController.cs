@@ -52,9 +52,12 @@ namespace Acedrive.Client.Controllers
         _session.AddVehicle(result);
         var vt = _session.SelectedVehicleType(result.VehicleTypeRefId);
         var loc = _session.ReadLocation();
+        var stime = _session.ReadTime("start");
+        var etime = _session.ReadTime("end");
         return Content($"You ordered a {vt.VehicleTypeName} which will be {vt.VehicleTypeCostPerDay} per Day. " +
                         $"Your selected vehicle is a {result.Year} {result.Manufacturer} {result.Model} from " +
-                        $"{loc.LocationAddress}, {loc.LocationCity}, {loc.LocationState}, {loc.LocationZipcode}. Is this correct?");
+                        $"{loc.LocationAddress}, {loc.LocationCity}, {loc.LocationState}, {loc.LocationZipcode} for " +
+                        $"the time period of: {stime} - {etime}. Is this correct?");
         //return RedirectToAction("EnterPaymentInfo", "Payment");
       }
       return View();

@@ -38,6 +38,8 @@ namespace Acedrive.Client
     Vehicle _vehicle;
     DateTime _start;
     DateTime _end;
+    string _startdateformat;
+    string _enddateformat;
     public void RegisterUser()
     {
 
@@ -72,11 +74,23 @@ namespace Acedrive.Client
     {
       return _vehicle;
     }
-
     public void SelectTime(DateTime s, DateTime e)
     {
       _start = s;
       _end = e;
+    }
+
+    internal void AddTime(string start, string end) {
+      _startdateformat = start;
+      _enddateformat = end;
+    }
+    
+    internal string ReadTime(string timeselect) {
+      if (timeselect == "start") {  
+        return _startdateformat;
+      } else {
+        return _enddateformat;
+      }
     }
 
     public List<Vehicle> SearchVehicles()

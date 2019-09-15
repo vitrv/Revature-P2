@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Select Rental Period";
+    ViewBag.Start = TempData["Start"];
+    ViewBag.End = TempData["End"];
+}
+
+@model Acedrive.Client.Models.RentalPeriodViewModel
+
+<form asp-controller="Rental" asp-action="RentalPeriodSelection" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Please Choose Your Start Date.</h5><br />
+
+  <table class = "table table-bordered text-center" >
+    <thead class = "thead-dark">
+      <tr>
+        <th>Start Date</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+          <td>
+            <input type="date" name="startdate" value="@ViewBag.Start" required/>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h5>Please Choose Your End Date.</h5><br />
+
+  <table class = "table table-bordered text-center" >
+    <thead class = "thead-dark">
+      <tr>
+        <th>End Date</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+          <td>
+            <input type="date" name="enddate" value="@ViewBag.End" required />
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <button type="submit">Continue to Next Step</button>
+  
+</form>
