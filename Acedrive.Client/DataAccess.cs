@@ -57,5 +57,9 @@ namespace Acedrive.Client
     internal VehicleType VehicleTypeSelector(int id) {
       return _db.VehicleTypes.FirstOrDefault(vt => vt.VehicleTypeId == id);
     }
+
+    internal Location LocationSelector(int id) {
+      return _db.Locations.FirstOrDefault(l => l.LocationId == id);
+    }
   }
 }

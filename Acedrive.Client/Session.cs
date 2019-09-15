@@ -115,5 +115,9 @@ namespace Acedrive.Client
     internal VehicleType SelectedVehicleType(int id) {
       return _data.VehicleTypeSelector(id);
     }
+
+    internal Location SelectedLocation(int id) {
+      return _data.LocationSelector(id);
+    }
   }
 }
