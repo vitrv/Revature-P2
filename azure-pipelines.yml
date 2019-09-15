@@ -3,7 +3,7 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-# devopsworld - pipline
+# acedrive - pipline
 
 name: $(date:yyyyMMdd)$(rev:.rr)
 
@@ -68,8 +68,20 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
+          - task: Docker@2
+            inputs: 
+              command: 'login'
+              containerRegistry: 'docker'
+            displayName: 'docker login'
           - script: |
-              dotnet publish 
+              docker image build --file Dockerfile --tag acedrive ./
+              docker image tag devopsworld lncatano/acedrive
+              docker push lncatano/acedrive
+          - task: Docker@2
+            inputs:
+              command: 'logout'
+              containerRegistry: 'docker'
+            displayName: 'docker logout'
 
   - stage: 'deploy'
     condition: succeeded()
@@ -84,7 +96,7 @@ stages:
           vmImage: 'ubuntu-16.04'
         steps:
           - script: |
-              echo 'working ont'
+              echo 'deployy'
 
 trigger:
   branches:
