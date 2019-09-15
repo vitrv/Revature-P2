@@ -45,6 +45,11 @@ namespace Acedrive.Client
       return _db.VehicleTypes.ToList();
     }
 
+    internal List<Location> GetAllLocations()
+    {
+      return _db.Locations.ToList();
+    }
+
     internal Vehicle VehicleSelector(int id) {
       return _db.Vehicles.FirstOrDefault(v => v.VehicleId == id);
     }

@@ -103,6 +103,11 @@ namespace Acedrive.Client
       return _data.GetAllVehicleTypes();
     }
 
+    internal List<Location> GetLocations()
+    {
+      return _data.GetAllLocations();
+    }
+
     internal Vehicle SelectedVehicle(int id) {
       return _data.VehicleSelector(id);
     }
