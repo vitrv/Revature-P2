@@ -7,7 +7,7 @@ namespace Acedrive.Domain.Models
   public class Payment
   {
     [Key]
-    public int PaymentId { get; set; }  
+    public int PaymentId { get; set; }
     public int RentalRefId { get; set; }
     public Rental RentId { get; set; }
     //[DataType(DataType.Date)]

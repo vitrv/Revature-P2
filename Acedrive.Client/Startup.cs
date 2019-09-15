@@ -63,7 +63,7 @@ namespace Acedrive.Client
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Vehicle}/{action=VehicleTypeSelection}/{id?}");
+                    template: "{controller=Location}/{action=LocationSelection}/{id?}");
             });
         }
     }
