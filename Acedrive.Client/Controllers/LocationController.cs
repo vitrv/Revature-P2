@@ -25,7 +25,7 @@ namespace Acedrive.Client.Controllers {
         
         var result = _session.SelectedLocation(lid);
         //return Content($"You selected our location at {result.LocationAddress}, {result.LocationCity}, {result.LocationState}, {result.LocationZipcode}.\nIs this correct?");
-        return RedirectToAction("VehicleTypeSelection", "Vehicle", new { loc = result });
+        return RedirectToAction("VehicleTypeSelection", "Vehicle", new { lid = result.LocationId, lzip = result.LocationZipcode });
       }
       return View();
     }
