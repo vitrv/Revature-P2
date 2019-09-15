@@ -83,8 +83,10 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
-          - script: |
-              echo 'working ont'
+          - task: AzureWebAppContainer@1
+            inputs:
+              azureSubscription: 'lncatano(045d809c-824e-4fac-9222-ad8c6a5b6b62)'
+              appName: 'acedrive'
 
 trigger:
   branches:
