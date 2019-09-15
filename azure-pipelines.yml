@@ -75,7 +75,7 @@ stages:
             displayName: 'docker login'
           - script: |
               docker image build --file Dockerfile --tag acedrive ./
-              docker image tag devopsworld lncatano/acedrive
+              docker image tag acedrive lncatano/acedrive
               docker push lncatano/acedrive
           - task: Docker@2
             inputs:
