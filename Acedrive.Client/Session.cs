@@ -28,13 +28,15 @@ namespace Acedrive.Client
   public class Session
   {
     DataAccess _data;
+    Dictionary<string, int> sessionIDs;
     internal Session(string secret)
     {
       _data = new DataAccess(secret);
     }
     User _user;
     Location _location;
-
+    Vehicle _vehicle;
+    Vehicle _vehicleype;
     public void RegisterUser()
     {
 
@@ -50,9 +52,24 @@ namespace Acedrive.Client
 
     }
 
-    public void SelectLocation()
+    internal void AddLocation(Location location)
     {
+      _location = location;
+    }
 
+    internal Location ReadLocation()
+    {
+      return _location;
+    }
+
+    internal void AddVehicle(Vehicle vehicle)
+    {
+      _vehicle = vehicle;
+    }
+
+    internal Vehicle ReadVehicle()
+    {
+      return _vehicle;
     }
 
     public void SelectTime()

@@ -24,8 +24,9 @@ namespace Acedrive.Client.Controllers {
         //add code to save selected location to db
         
         var result = _session.SelectedLocation(lid);
+        _session.AddLocation(result);
         //return Content($"You selected our location at {result.LocationAddress}, {result.LocationCity}, {result.LocationState}, {result.LocationZipcode}.\nIs this correct?");
-        return RedirectToAction("VehicleTypeSelection", "Vehicle", new { lid = result.LocationId, lzip = result.LocationZipcode });
+        return RedirectToAction("VehicleTypeSelection", "Vehicle");
       }
       return View();
     }

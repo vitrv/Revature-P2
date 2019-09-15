@@ -10,7 +10,7 @@ namespace Acedrive.Client.Controllers
 
     // GET: /Vehicle/VehicleTypeSelction
     [HttpGet]
-    public IActionResult VehicleTypeSelection(int lid, string lzip)
+    public IActionResult VehicleTypeSelection()
     {
       //retrieve list of all car types in db with
       List<VehicleType> vehicletypes = _session.GetVehicleTypes();
@@ -27,7 +27,7 @@ namespace Acedrive.Client.Controllers
         
         var result = _session.SelectedVehicleType(vtid);
         //return Content($"You ordered a {result.VehicleTypeName} which will be {result.VehicleTypeCostPerDay} per Day. Is this correct?");
-        return RedirectToAction("VehicleSelection", new { vtid = result.VehicleTypeId, vtype = result.VehicleTypeName });
+        return RedirectToAction("VehicleSelection", new { vtid = result.VehicleTypeId, vtype = result.VehicleTypeName});
       }
       return View();
     }
@@ -49,10 +49,12 @@ namespace Acedrive.Client.Controllers
         //add code to save selected vehicle to db
         
         var result = _session.SelectedVehicle(vid);
+        _session.AddVehicle(result);
         var vt = _session.SelectedVehicleType(result.VehicleTypeRefId);
+        var loc = _session.ReadLocation();
         return Content($"You ordered a {vt.VehicleTypeName} which will be {vt.VehicleTypeCostPerDay} per Day. " +
-                        $"Your selected vehicle is a {result.Year} {result.Manufacturer} {result.Model} from ");
-                        //$"{l.LocationAddress}, {l.LocationCity}, {l.LocationState}, {l.LocationZipcode}. Is this correct?");
+                        $"Your selected vehicle is a {result.Year} {result.Manufacturer} {result.Model} from " +
+                        $"{loc.LocationAddress}, {loc.LocationCity}, {loc.LocationState}, {loc.LocationZipcode}. Is this correct?");
         //return RedirectToAction("EnterPaymentInfo", "Payment");
       }
       return View();
