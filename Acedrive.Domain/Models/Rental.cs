@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace Acedrive.Domain.Models
 {
@@ -21,5 +22,14 @@ namespace Acedrive.Domain.Models
     [MaxLength(1)]
     public string VehicleStatus { get; set; }
     public ICollection<Payment> Payments { get; set; }
+
+    public string ConvertToMonthName(int month) {
+      return DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
+    }
+
+    public int DaysForMonth(int month) {
+      int currentyear = DateTime.Now.Year;
+      return DateTime.DaysInMonth(currentyear, month);
+    }
   }
 }
