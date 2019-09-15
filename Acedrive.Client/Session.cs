@@ -28,7 +28,6 @@ namespace Acedrive.Client
   public class Session
   {
     DataAccess _data;
-    Dictionary<string, int> sessionIDs;
     internal Session(string secret)
     {
       _data = new DataAccess(secret);
