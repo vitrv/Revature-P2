@@ -72,7 +72,7 @@ stages:
             inputs: 
               command: 'login'
               containerRegistry: 'docker'
-            displayName: 'docker login'
+            displayName: 'docker log-in'
           - script: |
               docker image build --file Dockerfile --tag acedrive ./
               docker image tag acedrive lncatano/acedrive
