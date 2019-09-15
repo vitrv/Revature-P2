@@ -84,7 +84,7 @@ stages:
             displayName: 'docker log-out'
 
   - stage: 'deploy'
-    condition: succeeded()
+    condition: succeeded('pack')
     dependsOn:
       - test
     displayName: 'deploy-mvc'
