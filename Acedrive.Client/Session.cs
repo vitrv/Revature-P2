@@ -34,7 +34,8 @@ namespace Acedrive.Client
     }
     User _user;
     Location _location;
-
+    Vehicle _vehicle;
+    Vehicle _vehicleype;
     public void RegisterUser()
     {
 
@@ -50,9 +51,24 @@ namespace Acedrive.Client
 
     }
 
-    public void SelectLocation()
+    internal void AddLocation(Location location)
     {
+      _location = location;
+    }
 
+    internal Location ReadLocation()
+    {
+      return _location;
+    }
+
+    internal void AddVehicle(Vehicle vehicle)
+    {
+      _vehicle = vehicle;
+    }
+
+    internal Vehicle ReadVehicle()
+    {
+      return _vehicle;
     }
 
     public void SelectTime()
@@ -103,12 +119,21 @@ namespace Acedrive.Client
       return _data.GetAllVehicleTypes();
     }
 
+    internal List<Location> GetLocations()
+    {
+      return _data.GetAllLocations();
+    }
+
     internal Vehicle SelectedVehicle(int id) {
       return _data.VehicleSelector(id);
     }
 
     internal VehicleType SelectedVehicleType(int id) {
       return _data.VehicleTypeSelector(id);
+    }
+
+    internal Location SelectedLocation(int id) {
+      return _data.LocationSelector(id);
     }
   }
 }
