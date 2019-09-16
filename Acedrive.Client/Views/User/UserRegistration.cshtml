@@ -12,7 +12,7 @@
   <table class = "table table-bordered text-center">
     <tbody>
       <tr>
-        <th>Profile Information</th>
+        <th colspan="2" class="table-primary">Profile Information</th>
       <tr>
 
       <tr>
@@ -129,14 +129,7 @@
       </tr>
 
       <tr>
-        <th>Login Information</th>
-      </tr>
-
-      <tr>
-        <th class="table-dark">Driver License Number</th>
-        <td>
-          <input type="text" name="UserDriverLicense" pattern="[0-9A-Z]+" value="@Model.UserDriverLicense" required>
-        </td>
+        <th colspan="2" class="table-primary">Login Information</th>
       </tr>
 
       <tr>
@@ -147,16 +140,23 @@
       </tr>
 
       <tr>
+        <th class="table-dark">Password</th>
+        <td>
+          <input type="password" name="UserPassword" minlength=6 pattern="[0-9A-Za-z]+" value="@Model.UserPassword" required>
+        </td>
+      </tr>
+
+      <tr>
         <th class="table-dark">Phone Number</th>
         <td>
           <input type="tel" name="UserPhoneNumber" pattern="([0-9]{3}[-])([0-9]{3}[-])([0-9]{4})" value="@Model.UserPhoneNumber" required>
         </td>
       </tr>
-
+      
       <tr>
-        <th class="table-dark">Password</th>
+        <th class="table-dark">Driver License Number</th>
         <td>
-          <input type="password" name="UserPassword" minlength=6 pattern="[0-9A-Za-z]+" value="@Model.UserPassword" required>
+          <input type="text" name="UserDriverLicense" pattern="[0-9A-Z]+" value="@Model.UserDriverLicense" required>
         </td>
       </tr>
 
