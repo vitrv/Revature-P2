@@ -42,11 +42,14 @@ namespace Acedrive.Client.Controllers {
     public IActionResult DisplayRentalDetails()
     {
       //display a view for showing the details of rental to User
+      Payment userpayment = _session.GetRentalPayment();
+      
       RentalOrderViewModel rentalparts = new RentalOrderViewModel();
       rentalparts.DisplayRentalPeriod(_session.ReadTime("start"), _session.ReadTime("end"));
       rentalparts.DisplayStoreLocation(_session.ReadLocation());
       rentalparts.DisplayRentalVehicleType(_session.ReadVehicleType());
       rentalparts.DisplayRentalVehicle(_session.ReadVehicle());
+      rentalparts.DisplayRentalPayment(userpayment);
       return View(rentalparts);
     }
 
@@ -57,7 +60,6 @@ namespace Acedrive.Client.Controllers {
     {
       if (ModelState.IsValid) {
         //add code to save the data to Rentals Table
-        //return Content("To Be Continued...");
         return RedirectToAction("EnterPaymentInfo");
       }
       return View();
@@ -77,8 +79,20 @@ namespace Acedrive.Client.Controllers {
     [ValidateAntiForgeryToken]
     public IActionResult EnterPaymentInfo(bool paymentclear)
     {
-      if (ModelState.IsValid) {
+      if (paymentclear == true) {
         //add code to save the data to Rentals Table
+        Rental validatedrental = new Rental {
+          StartDate = _session.ReadStartDate(),
+          EndDate = _session.ReadEndDate(),
+          UserRefId = _session.ReadUser().UserId,
+          LocationRefId = _session.ReadLocation().LocationId,
+          VehicleRefId = _session.ReadVehicle().VehicleId,
+          VehicleStatus = "Active"
+        };
+
+        _session.AddRental(validatedrental);
+        _session.SaveNewRental(validatedrental);
+
         return Content("Thank You for Renting with Us!");
         //return RedirectToAction("UserHome", "User");
       }

@@ -16,10 +16,6 @@ namespace Acedrive.Client
       _db = new AcedriveDbContext(secret);
     }
     
-    public void AddUser(User u)
-    {
-
-    }
     public void AddVehicleType(VehicleType vt)
     {
       
@@ -30,8 +26,8 @@ namespace Acedrive.Client
       _db.SaveChanges();
     }
 
-    internal void SavetoVehicleTypes(VehicleType vt) {
-      _db.Add(vt);
+    internal void SavetoRentals(Rental r) {
+      _db.Rentals.Add(r);
       _db.SaveChanges();
     }
 
@@ -52,7 +48,7 @@ namespace Acedrive.Client
 
     internal void UpdateVehicleType(VehicleType vt)
     {
-      _db.AddOrUpdate()
+      _db.VehicleTypes.Attach(vt);
       _db.SaveChanges();
     }
 

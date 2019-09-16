@@ -31,5 +31,8 @@ namespace Acedrive.Client.Models {
 
     [Required]
     public string BillingZipCode { get; set; }
+    
+    [Required]
+    public bool paymentclear { get; set; }
   }
 }

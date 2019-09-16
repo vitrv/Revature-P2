@@ -39,6 +39,7 @@ namespace Acedrive.Client
     VehicleType _vehicletype;
     DateTime _start;
     DateTime _end;
+    Rental _rental;
     string _startdateformat;
     string _enddateformat;
     
@@ -90,6 +91,16 @@ namespace Acedrive.Client
       }
     }
 
+    internal void AddRental(Rental rental)
+    {
+      _rental = rental;
+    }
+
+    internal Rental ReadRental()
+    {
+      return _rental;
+    }
+
     public Rental ConfirmRental()
     {
       return null;
@@ -116,6 +127,10 @@ namespace Acedrive.Client
 
     internal void SaveNewUser(User u) {
       _data.SavetoUsers(u);
+    }
+
+    internal void SaveNewRental(Rental r) {
+      _data.SavetoRentals(r);
     }
 
     internal Vehicle SelectedVehicle(int id) {
@@ -197,6 +212,13 @@ namespace Acedrive.Client
     internal List<Vehicle> GetVehicles()
     {
       return _data.GetAllVehicles();
+    }  
+    internal DateTime ReadStartDate() {
+      return _start;
+    }
+
+    internal DateTime ReadEndDate() {
+      return _end;
     }
   }
 }
