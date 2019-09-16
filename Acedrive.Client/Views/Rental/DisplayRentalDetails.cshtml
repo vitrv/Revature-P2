@@ -7,7 +7,7 @@
 <form asp-controller="Rental" asp-action="DisplayRentalDetails" method="post">
   @Html.AntiForgeryToken()
 
-  <h5>Rental Order Details</h5><br>
+  <h5>Please Review Your Rental Details.</h5><br>
 
   <table class = "table table-bordered text-center" >
     <tbody>
@@ -42,6 +42,11 @@
       <tr>
         <th class = "table-dark">Vehicle Year</th>
         <td>@Model.VehicleYear</td>
+      </tr>
+    </tbody>
+    <tr>
+        <th class = "table-info">Total Rental Cost</th>
+        <td>$500.00</td>
       </tr>
     </tbody>
   </table>
