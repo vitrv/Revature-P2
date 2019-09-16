@@ -12,6 +12,7 @@ namespace Acedrive.Domain.Models
     public Rental RentId { get; set; }
     //[DataType(DataType.Date)]
     public DateTime PaymentDate {get; set; }
+    
     [DataType(DataType.Currency)]
     public decimal PaymentAmount { get; set; }
   }
