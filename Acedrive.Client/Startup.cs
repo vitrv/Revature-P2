@@ -50,6 +50,7 @@ namespace Acedrive.Client
             }
             else
             {
+                app.UseDeveloperExceptionPage();
                 _connectionString = Configuration.GetConnectionString("SQLCONNSTR_Secret");
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
