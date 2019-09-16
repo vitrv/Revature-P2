@@ -10,7 +10,11 @@
   <h5>Please Enter Your Account Information.</h5><br>
 
   <table class = "table table-bordered text-center">
-    <tbody>  
+    <tbody>
+      <tr>
+        <th>Profile Information</th>
+      <tr>
+
       <tr>
         <th class="table-dark">First Name</th>
         <td>
@@ -107,16 +111,31 @@
       </tr>
 
       <tr>
-        <th class="table-dark">Driver License Number</th>
+        <th class="table-dark">Date of Birth</th>
         <td>
-          <input type="text" name="UserDriverLicense" pattern="[0-9A-Z]+" value="@Model.UserDriverLicense" required>
+          <input type="date" name="UserDOB" value="@Model.UserDOB" required>
         </td>
       </tr>
 
       <tr>
-        <th class="table-dark">Date of Birth</th>
+        <th class="table-dark">Are You Insured?</th>
         <td>
-          <input type="date" name="UserDOB" value="@Model.UserDOB" required>
+          <select name="IsInsured" value="@Model.IsInsured" required>
+            <option disabled>-----Select One Option-----</option>
+	          <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Login Information</th>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Driver License Number</th>
+        <td>
+          <input type="text" name="UserDriverLicense" pattern="[0-9A-Z]+" value="@Model.UserDriverLicense" required>
         </td>
       </tr>
 
@@ -135,13 +154,9 @@
       </tr>
 
       <tr>
-        <th class="table-dark">Are You Insured?</th>
+        <th class="table-dark">Password</th>
         <td>
-          <select name="IsInsured" value="@Model.IsInsured" required>
-            <option disabled>-----Select One Option-----</option>
-	          <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
+          <input type="password" name="UserPassword" minlength=6 pattern="[0-9A-Za-z]+" value="@Model.UserPassword" required>
         </td>
       </tr>
 
