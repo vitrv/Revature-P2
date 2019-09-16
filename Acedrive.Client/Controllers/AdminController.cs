@@ -8,7 +8,7 @@ namespace Acedrive.Client.Controllers
   {
     Session _session = SessionHandler.Instance();
 
-        [HttpGet]
+    [HttpGet]
     public IActionResult ViewVehicleTypes()
     {
       List<VehicleType> vt = _session.GetVehicleTypes();

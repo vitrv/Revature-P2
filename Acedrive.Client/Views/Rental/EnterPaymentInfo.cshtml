@@ -34,7 +34,7 @@
       <tr>
         <th class = "table-dark" >Name on Card</th>
         <td>
-          <input type="text" name="nameoncard" pattern="[A-Za-z]*" value="@Model.NameOnCard" required>
+          <input type="text" name="nameoncard" pattern="[A-Za-z][A-Za-z|\s]*" value="@Model.NameOnCard" required>
         </td>
       </tr>
       
@@ -53,13 +53,13 @@
       <tr>
         <th class="table-dark">Billing Address</th>
         <td>
-          <input type="text" name="billingaddress" pattern="[0-9]*[ ][A-Za-z]*[ ][A-Za-z][A-Za-z]*" value="@Model.BillingAddress" required>
+          <input type="text" name="billingaddress" pattern="[0-9]+[ ]*[A-Za-z|\s]*" value="@Model.BillingAddress" required>
         </td>
       </tr>
       <tr>
         <th class="table-dark">Billing City</th>
         <td>
-          <input type="text" name="billingcity" pattern="[A-Za-z]*" value="@Model.BillingCity" required>
+          <input type="text" name="billingcity" pattern="[A-Za-z][A-Za-z|\s]*" value="@Model.BillingCity" required>
         </td>
       </tr>
       <tr>
@@ -130,6 +130,6 @@
     </tbody>
   </table>
 
-  <button type="submit" value="true">Confirm Rental</button>
+  <button name="paymentclear" type="submit" value="true">Confirm Rental</button>
   
 </form>
