@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Acedrive.Data.Migrations
 {
     [DbContext(typeof(AcedriveDbContext))]
-    [Migration("20190909205251_dateWithoutTimeComplete")]
-    partial class dateWithoutTimeComplete
+    [Migration("20190916022617_migration1")]
+    partial class migration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
