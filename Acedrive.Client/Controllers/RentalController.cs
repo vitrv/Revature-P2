@@ -87,7 +87,7 @@ namespace Acedrive.Client.Controllers {
           UserRefId = _session.ReadUser().UserId,
           LocationRefId = _session.ReadLocation().LocationId,
           VehicleRefId = _session.ReadVehicle().VehicleId,
-          VehicleStatus = "a"
+          VehicleStatus = "Active"
         };
 
         _session.AddRental(validatedrental);
