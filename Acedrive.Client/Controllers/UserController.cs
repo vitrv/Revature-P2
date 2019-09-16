@@ -12,7 +12,6 @@ namespace Acedrive.Client.Controllers {
     [HttpGet]
     public IActionResult UserRegistration()
     {
-      //display a view for entering Registration Info for User
       User client = new User();
       return View(client);
     }
@@ -22,13 +21,11 @@ namespace Acedrive.Client.Controllers {
     public IActionResult UserRegistration(User u)
     {
       if (ModelState.IsValid) {
-        //saves Registration info to the User table
         _session.RegisterUser(u);
         var user = _session.ReadUser();
         _session.SaveNewUser(user);
         
         return RedirectToAction("RentalPeriodSelection", "Rental");
-        //return Content("$");
       }
       return View();
     }
@@ -37,7 +34,6 @@ namespace Acedrive.Client.Controllers {
     [HttpGet]
     public IActionResult UserLogin()
     {
-      //display a view for entering Login Info for User
       User client = new User();
       return View(client);
     }
@@ -52,7 +48,6 @@ namespace Acedrive.Client.Controllers {
         _session.SaveNewUser(user);
         
         return RedirectToAction("RentalPeriodSelection", "Rental");
-        //return Content("$");
       }
       return View();
     }

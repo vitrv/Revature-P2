@@ -12,11 +12,10 @@ namespace Acedrive.Client.Controllers {
     [HttpGet]
     public IActionResult RentalPeriodSelection()
     {
-      //display a view for entering the Rental Start & End Date for User
-        RentalPeriodViewModel rentalperiod = new RentalPeriodViewModel();
-        TempData["Start"] = rentalperiod.StartDate;
-        TempData["End"] = rentalperiod.EndDate;
-        return View();
+      RentalPeriodViewModel rentalperiod = new RentalPeriodViewModel();
+      TempData["Start"] = rentalperiod.StartDate;
+      TempData["End"] = rentalperiod.EndDate;
+      return View();
     }
 
     // POST: /Rental/RentalPeriodSelection
@@ -31,7 +30,6 @@ namespace Acedrive.Client.Controllers {
       
         _session.AddTime(start, end);
         _session.SelectTime(startdate, enddate);
-        //return Content($"You selected the rent of period of: {start} - {end}.\nIs this correct?");
         return RedirectToAction("LocationSelection", "Location");
       }
       return View();
@@ -41,7 +39,6 @@ namespace Acedrive.Client.Controllers {
     [HttpGet]
     public IActionResult DisplayRentalDetails()
     {
-      //display a view for showing the details of rental to User
       Payment userpayment = _session.GetRentalPayment();
       
       RentalOrderViewModel rentalparts = new RentalOrderViewModel();
@@ -59,7 +56,6 @@ namespace Acedrive.Client.Controllers {
     public IActionResult DisplayRentalDetails(bool rentalclear)
     {
       if (ModelState.IsValid) {
-        //add code to save the data to Rentals Table
         return RedirectToAction("EnterPaymentInfo");
       }
       return View();
@@ -69,7 +65,6 @@ namespace Acedrive.Client.Controllers {
     [HttpGet]
     public IActionResult EnterPaymentInfo()
     {
-      //display a view to the user for entering the Payment Info
       CheckoutViewModel rentalcheckout = new CheckoutViewModel();
       return View(rentalcheckout);
     }
@@ -99,7 +94,7 @@ namespace Acedrive.Client.Controllers {
         };
 
         return Content("Thank You for Renting with Us!");
-        //return RedirectToAction("UserHome", "User");
+        //return RedirectToAction("AfterPaymentAction", "Rental");
       }
     
       return View();
