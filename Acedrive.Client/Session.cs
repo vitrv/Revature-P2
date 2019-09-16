@@ -36,25 +36,12 @@ namespace Acedrive.Client
     User _user;
     Location _location;
     Vehicle _vehicle;
+    VehicleType _vehicletype;
     DateTime _start;
     DateTime _end;
     string _startdateformat;
     string _enddateformat;
-    public void RegisterUser()
-    {
-
-    }
-
-    public void LoginUser(User u)
-    {
-      _user = u;
-    }
-
-    public void LogoutUser()
-    {
-      _user = null;
-    }
-
+    
     internal void AddLocation(Location location)
     {
       _location = location;
@@ -65,6 +52,16 @@ namespace Acedrive.Client
       return _location;
     }
 
+    internal void AddVehicleType(VehicleType vehicletype)
+    {
+      _vehicletype = vehicletype;
+    }
+
+    internal VehicleType ReadVehicleType()
+    {
+      return _vehicletype;
+    }
+
     internal void AddVehicle(Vehicle vehicle)
     {
       _vehicle = vehicle;
@@ -73,11 +70,6 @@ namespace Acedrive.Client
     internal Vehicle ReadVehicle()
     {
       return _vehicle;
-    }
-    public void SelectTime(DateTime s, DateTime e)
-    {
-      _start = s;
-      _end = e;
     }
 
     internal void AddTime(string start, string end) {
@@ -93,64 +85,9 @@ namespace Acedrive.Client
       }
     }
 
-    public List<Vehicle> SearchVehicles()
-    {
-      return null;
-    }
-
-    public void SelectVehicle(Vehicle v)
-    {
-      _vehicle = v;
-    }
-
-    public Rental ViewRental()
-    {
-      return null;
-    }
-
     public Rental ConfirmRental()
     {
       return null;
-    }
-
-    public Payment GetRentalPayment()
-    {
-      TimeSpan rentalLength = new TimeSpan();
-      try
-      {
-      rentalLength = _end - _start;
-      }
-      catch(OverflowException)
-      {
-        return null;
-      }
-      Payment result = new Payment();
-      result.PaymentDate = _start;
-      result.PaymentAmount = ComputeCost(_user.IsInsured, rentalLength.Days, _vehicle.VehTypeId);
-      return result;
-    }
-    private decimal ComputeCost(bool insured, int rentPeriod, VehicleType vehicleType)
-    {
-      decimal costFactor = vehicleType.VehicleTypeCostPerDay;
-      decimal cost = costFactor * rentPeriod;
-      if (!insured)
-      {
-        cost += 50M;
-      }
-      return cost;
-    }
-
-    public void RegisterVehicleType()
-    {
-      Domain.Models.VehicleType vt = new Domain.Models.VehicleType();
-    }
-
-    internal void SaveV(Vehicle v) {
-      _data.SavetoVehicles(v);
-    }
-
-    internal void SaveVT(VehicleType vt) {
-      _data.SavetoVehicleTypes(vt);
     }
 
     internal List<Vehicle> GetVehicles(int id)
@@ -178,6 +115,66 @@ namespace Acedrive.Client
 
     internal Location SelectedLocation(int id) {
       return _data.LocationSelector(id);
+    }
+
+    //Laura's Methods
+    public void RegisterUser()
+    {
+
+    }
+
+    public void LoginUser(User u)
+    {
+      _user = u;
+    }
+
+    public void LogoutUser()
+    {
+      _user = null;
+    }
+    
+    public void SelectVehicle(Vehicle v)
+    {
+      _vehicle = v;
+    }
+    
+    public void RegisterVehicleType()
+    {
+      Domain.Models.VehicleType vt = new Domain.Models.VehicleType();
+    }
+    
+    public Payment GetRentalPayment()
+    {
+      TimeSpan rentalLength = new TimeSpan();
+      try
+      {
+      rentalLength = _end - _start;
+      }
+      catch(OverflowException)
+      {
+        return null;
+      }
+      Payment result = new Payment();
+      result.PaymentDate = _start;
+      result.PaymentAmount = ComputeCost(_user.IsInsured, rentalLength.Days, _vehicle.VehTypeId);
+      return result;
+    }
+
+    private decimal ComputeCost(bool insured, int rentPeriod, VehicleType vehicleType)
+    {
+      decimal costFactor = vehicleType.VehicleTypeCostPerDay;
+      decimal cost = costFactor * rentPeriod;
+      if (!insured)
+      {
+        cost += 50M;
+      }
+      return cost;
+    }
+    
+    public void SelectTime(DateTime s, DateTime e)
+    {
+      _start = s;
+      _end = e;
     }
   }
 }
