@@ -81,6 +81,7 @@ namespace Acedrive.Client.Controllers {
           UserRefId = _session.ReadUser().UserId,
           LocationRefId = _session.ReadLocation().LocationId,
           VehicleRefId = _session.ReadVehicle().VehicleId,
+          RentalCost = _session.ReadPayment(),
           VehicleStatus = true
         };
 
@@ -89,9 +90,11 @@ namespace Acedrive.Client.Controllers {
 
         Payment validatedpayment = new Payment {
           RentalRefId = _session.ReadRental().RentalId,
-          PaymentDate = DateTime.Now
-          
+          PaymentDate = DateTime.Now,
+          PaymentAmount = _session.ReadPayment()
         };
+
+        _session.SavePayment(validatedpayment);
 
         return Content("Thank You for Renting with Us!");
         //return RedirectToAction("AfterPaymentAction", "Rental");

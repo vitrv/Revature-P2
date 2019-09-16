@@ -120,6 +120,11 @@ namespace Acedrive.Client
       return _data.GetAllLocations();
     }
 
+    internal bool ValidateUser(string email, string password) {
+      bool usercheck = _data.ValidateUserEmail(email) && _data.ValidateUserPassword(password);
+      return usercheck;
+    }
+
     internal void SaveNewUser(User u) {
       _data.SavetoUsers(u);
     }

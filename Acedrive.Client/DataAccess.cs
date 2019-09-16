@@ -21,6 +21,16 @@ namespace Acedrive.Client
       
     }
 
+    internal bool ValidateUserEmail(string email) {
+      bool emailcheck = _db.Users.Select(u => u.UserEmail).Contains(email);
+      return emailcheck;
+    }
+
+    internal bool ValidateUserPassword(string password) {
+      bool emailcheck = _db.Users.Select(u => u.UserPassword).Contains(password);
+      return emailcheck;
+    }
+
     internal void SavetoUsers(User u) {
       _db.Users.Add(u);
       _db.SaveChanges();
