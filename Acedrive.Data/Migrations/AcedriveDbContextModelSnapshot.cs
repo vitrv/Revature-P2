@@ -46,8 +46,7 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<decimal>("PaymentAmount");
 
-                    b.Property<DateTime>("PaymentDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("PaymentDate");
 
                     b.Property<int>("RentalRefId");
 
