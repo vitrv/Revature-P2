@@ -57,7 +57,8 @@ namespace Acedrive.Client.Controllers {
     {
       if (ModelState.IsValid) {
         //add code to save the data to Rentals Table
-        return RedirectToAction("EnterPaymentInfo");
+        return Content("To Be Continued...");
+        //return RedirectToAction("EnterPaymentInfo");
       }
       return View();
     }
