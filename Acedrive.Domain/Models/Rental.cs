@@ -19,8 +19,11 @@ namespace Acedrive.Domain.Models
     public Location LocId { get; set; }
     public int VehicleRefId { get; set; }
     public Vehicle VehId { get; set; }
-    [MaxLength(1)]
-    public string VehicleStatus { get; set; }
+    // [MaxLength(1)]
+    public bool VehicleStatus { get; set; }
+
+    [DataType(DataType.Currency)]
+    public decimal RentalCost { get; set; }
     public ICollection<Payment> Payments { get; set; }
 
     public string ConvertToMonthName(int month) {

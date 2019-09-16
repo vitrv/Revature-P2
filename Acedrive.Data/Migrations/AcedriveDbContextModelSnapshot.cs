@@ -68,6 +68,8 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<int>("LocationRefId");
 
+                    b.Property<decimal>("RentalCost");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("date");
 
@@ -75,8 +77,7 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<int>("VehicleRefId");
 
-                    b.Property<string>("VehicleStatus")
-                        .HasMaxLength(1);
+                    b.Property<bool>("VehicleStatus");
 
                     b.HasKey("RentalId");
 
@@ -111,6 +112,9 @@ namespace Acedrive.Data.Migrations
                     b.Property<string>("UserDriverLicense");
 
                     b.Property<string>("UserEmail");
+
+                    b.Property<string>("UserPassword")
+                        .HasMaxLength(15);
 
                     b.Property<string>("UserPhoneNumber");
 

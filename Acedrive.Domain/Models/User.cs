@@ -22,6 +22,8 @@ namespace Acedrive.Domain.Models
     public DateTime UserDOB { get; set; }
     [EmailAddress]
     public string UserEmail { get; set; }
+    [MaxLength(15), MinLength(6)]
+    public string UserPassword { get; set; }
     [Phone]
     public string UserPhoneNumber {get; set; }
     public bool IsInsured { get; set; }

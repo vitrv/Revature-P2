@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Acedrive.Data.Migrations
 {
     [DbContext(typeof(AcedriveDbContext))]
-    [Migration("20190916025307_timeAddedtoPayment")]
-    partial class timeAddedtoPayment
+    [Migration("20190916211029_PasswordAndRentalPayAndVehStatusV3.5")]
+    partial class PasswordAndRentalPayAndVehStatusV35
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,8 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<int>("LocationRefId");
 
+                    b.Property<decimal>("RentalCost");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("date");
 
@@ -77,8 +79,7 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<int>("VehicleRefId");
 
-                    b.Property<string>("VehicleStatus")
-                        .HasMaxLength(1);
+                    b.Property<bool>("VehicleStatus");
 
                     b.HasKey("RentalId");
 
@@ -113,6 +114,9 @@ namespace Acedrive.Data.Migrations
                     b.Property<string>("UserDriverLicense");
 
                     b.Property<string>("UserEmail");
+
+                    b.Property<string>("UserPassword")
+                        .HasMaxLength(15);
 
                     b.Property<string>("UserPhoneNumber");
 
