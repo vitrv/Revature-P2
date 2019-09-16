@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Acedrive.Data.Migrations
 {
     [DbContext(typeof(AcedriveDbContext))]
-    [Migration("20190916205529_PasswordAndRentalPayAndVehStatusV3.0")]
-    partial class PasswordAndRentalPayAndVehStatusV30
+    [Migration("20190916211029_PasswordAndRentalPayAndVehStatusV3.5")]
+    partial class PasswordAndRentalPayAndVehStatusV35
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
