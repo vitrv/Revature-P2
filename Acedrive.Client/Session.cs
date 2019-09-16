@@ -105,6 +105,10 @@ namespace Acedrive.Client
       return _data.GetAllLocations();
     }
 
+    internal void SaveNewUser(User u) {
+      _data.SavetoUsers(u);
+    }
+
     internal Vehicle SelectedVehicle(int id) {
       return _data.VehicleSelector(id);
     }

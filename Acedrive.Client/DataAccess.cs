@@ -25,8 +25,8 @@ namespace Acedrive.Client
       
     }
 
-    internal void SavetoVehicles(Vehicle v) {
-      _db.Add(v);
+    internal void SavetoUsers(User u) {
+      _db.Users.Add(u);
       _db.SaveChanges();
     }
 

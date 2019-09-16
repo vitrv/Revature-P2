@@ -28,14 +28,14 @@
       <tr>
         <th class = "table-dark" >Street Address</th>
         <td>
-          <input type="text" name="UserAddress" pattern="[0-9]*[ ][A-Za-z]*[ ][A-Za-z][A-Za-z]*" value="@Model.UserAddress" required>
+          <input type="text" name="UserAddress" pattern="[0-9]+[ ]*[A-Za-z|\s]*" value="@Model.UserAddress" required>
         </td>
       </tr>
       
       <tr>
         <th class="table-dark">City</th>
         <td>
-          <input type="text" name="UserCtiy" pattern="[A-Za-z]*" value="@Model.UserCity" required>
+          <input type="text" name="UserCity" pattern="[A-Za-z][A-Za-z|\s]*" value="@Model.UserCity" required>
         </td>
       </tr>
 
@@ -109,7 +109,7 @@
       <tr>
         <th class="table-dark">Driver License Number</th>
         <td>
-          <input type="text" name="UserDriverLicense" pattern="[0-9A-Z]*" value="@Model.UserDriverLicense" required>
+          <input type="text" name="UserDriverLicense" pattern="[0-9A-Z]+" value="@Model.UserDriverLicense" required>
         </td>
       </tr>
 
