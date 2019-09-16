@@ -1,0 +1,76 @@
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+@model Acedrive.Client.Models.CheckoutViewModel
+
+<form asp-controller="Rental" asp-action="EnterPaymentInfo" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Payment Form</h5><br>
+
+  <table class = "table table-bordered text-center">
+    <tbody>  
+      <tr>
+        <th class="table-dark">Card Type</th>
+        <td>
+          <select name="cardtype" value="@Model.CardType" required>
+            <option disabled selected>---Select Card Type---</option>
+            <option>Visa</option>
+            <option>MasterCard</option>
+            <option>American Express</option>
+            <option>Discover</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Card Number</th>
+        <td>
+          <input type="text" name="cardnumber" pattern="[0-9]{16}" value="@Model.CardNumber" required>
+        </td>
+      </tr>
+
+      <tr>
+        <th class = "table-dark">Name on Card</th>
+        <td>
+          <input type="text" name="nameoncard" pattern="[A-Za-z]" value="@Model.NameOnCard" required>
+        </td>
+      </tr>
+      
+      <tr>
+        <th class="table-dark">Security Code</th>
+        <td>
+          <input type="text" name="cardsecuritycode" pattern="[0-9]{3}" value="@Model.SecurityCode" required>
+        </td>
+      </tr>
+      <tr>
+        <th class="table-dark">Billing Address</th>
+        <td>
+          <input type="text" name="billingaddress" pattern="[0-9A-Za-z]" value="@Model.BillingAddress" required>
+        </td>
+      </tr>
+      <tr>
+        <th class="table-dark">Billing City</th>
+        <td>
+          <input type="text" name="billingcity" pattern="[A-Za-z]" value="@Model.BillingCity" required>
+        </td>
+      </tr>
+      <tr>
+        <th class="table-dark">Billing State</th>
+        <td>
+          <input type="text" name="billingstate" pattern="[A-Z]{2}" value="@Model.BillingState" required>
+        </td>
+      </tr>
+      <tr>
+        <th class="table-dark">Billing Zip Code</th>
+        <td>
+          <input type="text" name="billingzipcode" pattern="[0-9]{5}" value="@Model.BillingZipCode" required>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="submit" value="true">Place Order</button>
+  
+</form>

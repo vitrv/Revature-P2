@@ -57,10 +57,33 @@ namespace Acedrive.Client.Controllers {
     {
       if (ModelState.IsValid) {
         //add code to save the data to Rentals Table
-        return Content("To Be Continued...");
-        //return RedirectToAction("EnterPaymentInfo");
+        //return Content("To Be Continued...");
+        return RedirectToAction("EnterPaymentInfo");
       }
       return View();
     }
+
+    // GET: /Rental/EnterPaymentInfo
+    [HttpGet]
+    public IActionResult EnterPaymentInfo()
+    {
+      //display a view to the user for entering the Payment Info
+      CheckoutViewModel rentalcheckout = new CheckoutViewModel();
+      return View(rentalcheckout);
+    }
+
+    // POST: /Rental/EnterPaymentInfo
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult EnterPaymentInfo(bool paymentclear)
+    {
+      if (ModelState.IsValid) {
+        //add code to save the data to Rentals Table
+        return Content("Thank You for Renting with Us!");
+        //return RedirectToAction("UserHome", "User");
+      }
+      return View();
+    }
+
   }    
 }
