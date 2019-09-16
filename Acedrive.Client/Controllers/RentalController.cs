@@ -95,7 +95,7 @@ namespace Acedrive.Client.Controllers {
         Payment validatedpayment = new Payment {
           RentalRefId = _session.ReadRental().RentalId,
           PaymentDate = DateTime.Now
-
+          
         };
 
         return Content("Thank You for Renting with Us!");

@@ -21,6 +21,10 @@ namespace Acedrive.Client
       
     }
 
+    internal void ValidateUser(User u) {
+      _db.Users.(u);
+    }
+
     internal void SavetoUsers(User u) {
       _db.Users.Add(u);
       _db.SaveChanges();

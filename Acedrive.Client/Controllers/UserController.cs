@@ -32,5 +32,30 @@ namespace Acedrive.Client.Controllers {
       }
       return View();
     }
+
+    // GET: /User/UserRegistration
+    [HttpGet]
+    public IActionResult UserLogin()
+    {
+      //display a view for entering Login Info for User
+      User client = new User();
+      return View(client);
+    }
+
+    // POST: /User/UserLogin
+    [HttpPost]
+    public IActionResult UserLogin(User u)
+    {
+      if (ModelState.IsValid) {
+        _session.RegisterUser(u);
+        var user = _session.ReadUser();
+        _session.SaveNewUser(user);
+        
+        return RedirectToAction("RentalPeriodSelection", "Rental");
+        //return Content("$");
+      }
+      return View();
+    }
+
   }
 }

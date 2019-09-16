@@ -150,9 +150,9 @@ namespace Acedrive.Client
       return _user;
     }
 
-    public void LoginUser(User u)
+    public bool LoginUser(User u)
     {
-      _user = u;
+      return 
     }
 
     public void LogoutUser()
