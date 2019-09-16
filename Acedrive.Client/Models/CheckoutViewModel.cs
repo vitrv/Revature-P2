@@ -18,6 +18,9 @@ namespace Acedrive.Client.Models {
     public string SecurityCode { get; set; }
 
     [Required]
+    public string CardExpiration { get; set; }
+
+    [Required]
     public string BillingAddress { get; set; }
 
     [Required]

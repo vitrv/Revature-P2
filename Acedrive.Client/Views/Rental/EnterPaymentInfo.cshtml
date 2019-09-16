@@ -15,7 +15,7 @@
         <th class="table-dark">Card Type</th>
         <td>
           <select name="cardtype" value="@Model.CardType" required>
-            <option disabled selected>---Select Card Type---</option>
+            <option disabled>---Select Card Type---</option>
             <option>Visa</option>
             <option>MasterCard</option>
             <option>American Express</option>
@@ -27,14 +27,14 @@
       <tr>
         <th class="table-dark">Card Number</th>
         <td>
-          <input type="text" name="cardnumber" pattern="[0-9]{16}" value="@Model.CardNumber" required>
+          <input type="text" name="cardnumber" pattern="([0-9]{4}[-])([0-9]{4}[-])([0-9]{4}[-])([0-9]{4})" value="@Model.CardNumber" required>
         </td>
       </tr>
 
       <tr>
         <th class = "table-dark" >Name on Card</th>
         <td>
-          <input type="text" name="nameoncard" pattern="[A-Za-z]" value="@Model.NameOnCard" required>
+          <input type="text" name="nameoncard" pattern="[A-Za-z]*" value="@Model.NameOnCard" required>
         </td>
       </tr>
       
@@ -45,22 +45,28 @@
         </td>
       </tr>
       <tr>
+        <th class="table-dark">Card Expiration</th>
+        <td>
+          <input type="text" name="cardexpiration" pattern="([0][1-9]|[1][0-2])\/([2][0][1][9]|[2][0-9][2-9][0-9]|[3-9][0-9]{3})" value="@Model.SecurityCode" required>
+        </td>
+      </tr>
+      <tr>
         <th class="table-dark">Billing Address</th>
         <td>
-          <input type="text" name="billingaddress" pattern="[0-9A-Za-z]" value="@Model.BillingAddress" required>
+          <input type="text" name="billingaddress" pattern="[0-9]*[ ][A-Za-z]*[ ][A-Za-z][A-Za-z]*" value="@Model.BillingAddress" required>
         </td>
       </tr>
       <tr>
         <th class="table-dark">Billing City</th>
         <td>
-          <input type="text" name="billingcity" pattern="[A-Za-z]" value="@Model.BillingCity" required>
+          <input type="text" name="billingcity" pattern="[A-Za-z]*" value="@Model.BillingCity" required>
         </td>
       </tr>
       <tr>
         <th class="table-dark">Billing State</th>
         <td>
           <select name="billingstate" value="@Model.BillingState" required>
-            <option disabled selected>-----Select State-----</option>
+            <option disabled>-----Select State-----</option>
 	          <option value="AL">Alabama</option>
           	<option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
