@@ -47,6 +47,11 @@ namespace Acedrive.Client
       _location = location;
     }
 
+    internal void UpdateVehicleType(VehicleType vt)
+    {
+      _data.UpdateVehicleType(vt);
+    }
+
     internal Location ReadLocation()
     {
       return _location;
@@ -98,6 +103,10 @@ namespace Acedrive.Client
     internal List<VehicleType> GetVehicleTypes()
     {
       return _data.GetAllVehicleTypes();
+    }
+    internal VehicleType GetVehicleType(int vtid)
+    {
+      return _data.VehicleTypeSelector(vtid);
     }
 
     internal List<Location> GetLocations()
@@ -183,6 +192,11 @@ namespace Acedrive.Client
     {
       _start = s;
       _end = e;
+    }
+
+    internal List<Vehicle> GetVehicles()
+    {
+      return _data.GetAllVehicles();
     }
   }
 }
