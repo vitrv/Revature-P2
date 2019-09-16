@@ -80,7 +80,6 @@ namespace Acedrive.Client.Controllers {
     public IActionResult EnterPaymentInfo(bool paymentclear)
     {
       if (paymentclear == true) {
-        //add code to save the data to Rentals Table
         Rental validatedrental = new Rental {
           StartDate = _session.ReadStartDate(),
           EndDate = _session.ReadEndDate(),
@@ -93,11 +92,17 @@ namespace Acedrive.Client.Controllers {
         _session.AddRental(validatedrental);
         _session.SaveNewRental(validatedrental);
 
+        Payment validatedpayment = new Payment {
+          RentalRefId = _session.ReadRental().RentalId,
+          PaymentDate = DateTime.Now
+
+        };
+
         return Content("Thank You for Renting with Us!");
         //return RedirectToAction("UserHome", "User");
       }
+    
       return View();
     }
-
   }    
 }

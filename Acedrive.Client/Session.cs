@@ -124,6 +124,10 @@ namespace Acedrive.Client
       _data.SavetoRentals(r);
     }
 
+    internal void SavePayment(Payment p) {
+      _data.SavetoPayments(p);
+    }
+    
     internal Vehicle SelectedVehicle(int id) {
       return _data.VehicleSelector(id);
     }

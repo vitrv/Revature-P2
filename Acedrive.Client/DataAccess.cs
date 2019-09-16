@@ -31,6 +31,11 @@ namespace Acedrive.Client
       _db.SaveChanges();
     }
 
+    internal void SavetoPayments(Payment p) {
+      _db.Payments.Add(p);
+      _db.SaveChanges();
+    }
+
     internal List<Vehicle> GetAllVehicles(int id)
     {
       return _db.Vehicles.Where(v => v.VehicleTypeRefId == id).ToList();
