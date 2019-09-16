@@ -118,9 +118,13 @@ namespace Acedrive.Client
     }
 
     //Laura's Methods
-    public void RegisterUser()
+    internal void RegisterUser(User u)
     {
+      _user = u;
+    }
 
+    internal User ReadUser() {
+      return _user;
     }
 
     public void LoginUser(User u)

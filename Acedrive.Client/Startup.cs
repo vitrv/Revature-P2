@@ -66,7 +66,7 @@ namespace Acedrive.Client
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Rental}/{action=RentalPeriodSelection}/{id?}");
+                    template: "{controller=User}/{action=UserRegistration}/{id?}");
             });
         }
     }
