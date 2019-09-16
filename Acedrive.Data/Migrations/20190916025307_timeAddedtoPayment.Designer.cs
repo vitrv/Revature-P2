@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Acedrive.Data.Migrations
 {
     [DbContext(typeof(AcedriveDbContext))]
-    [Migration("20190916022617_migration1")]
-    partial class migration1
+    [Migration("20190916025307_timeAddedtoPayment")]
+    partial class timeAddedtoPayment
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,8 +48,7 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<decimal>("PaymentAmount");
 
-                    b.Property<DateTime>("PaymentDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("PaymentDate");
 
                     b.Property<int>("RentalRefId");
 

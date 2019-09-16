@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Acedrive.Data.Migrations
 {
-    public partial class migration1 : Migration
+    public partial class timeAddedtoPayment : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -127,7 +127,7 @@ namespace Acedrive.Data.Migrations
                     PaymentId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RentalRefId = table.Column<int>(nullable: false),
-                    PaymentDate = table.Column<DateTime>(type: "date", nullable: false),
+                    PaymentDate = table.Column<DateTime>(nullable: false),
                     PaymentAmount = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>

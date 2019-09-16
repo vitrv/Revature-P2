@@ -54,10 +54,6 @@ namespace Acedrive.Data
       .Property(u => u.UserDOB)
       .HasColumnType("date");
 
-      builder.Entity<Payment>()
-      .Property(p => p.PaymentDate)
-      .HasColumnType("date");
-
       builder.Entity<Rental>()
       .Property(r => r.StartDate)
       .HasColumnType("date");
