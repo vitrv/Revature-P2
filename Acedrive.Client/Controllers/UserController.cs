@@ -25,8 +25,10 @@ namespace Acedrive.Client.Controllers {
         //saves Registration info to the User table
         _session.RegisterUser(u);
         var user = _session.ReadUser();
+        _session.SaveNewUser(user);
+        
         return RedirectToAction("RentalPeriodSelection", "Rental");
-        //return Content("$You're good to go!");
+        //return Content("$");
       }
       return View();
     }
