@@ -1,0 +1,21 @@
+@model List<Acedrive.Domain.Models.VehicleType>
+
+ <table class = "table table-bordered text-center" >
+    <thead class = "thead-dark">
+      <tr>
+        <th>Vehicle Id</th>
+        <th>Vehicle Type</th>
+        <th>Price (Charged Per Day)</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      @foreach (var item in Model) {
+        <tr>
+          <td>@item.VehicleTypeId</td>
+          <td>@item.VehicleTypeName</td>
+          <td>$@item.VehicleTypeCostPerDay</td>
+        </tr>
+      }
+    </tbody>
+  </table>

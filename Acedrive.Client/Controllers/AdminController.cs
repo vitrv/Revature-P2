@@ -8,6 +8,13 @@ namespace Acedrive.Client.Controllers
   {
     Session _session = SessionHandler.Instance();
 
+        [HttpGet]
+    public IActionResult ViewVehicleTypes()
+    {
+      List<VehicleType> vt = _session.GetVehicleTypes();
+      return View(vt);
+    }
+
     [HttpGet]
     public IActionResult AddVehicleType()
     {
@@ -16,11 +23,40 @@ namespace Acedrive.Client.Controllers
     }
 
     [HttpPost]
-    public IActionResult AddVehicleType()
+    public IActionResult AddVehicleType(VehicleType vt)
     {
       
       return View();
     }
+
+    [HttpGet]
+    public IActionResult AddVehicle()
+    {
+
+      return View();
+    }
+
+    [HttpPost]
+    public IActionResult AddVehicle(Vehicle v)
+    {
+      
+      return View();
+    }
+        [HttpGet]
+    public IActionResult AddLocation()
+    {
+
+      return View();
+    }
+
+    [HttpPost]
+    public IActionResult AddLocation(Location l)
+    {
+      
+      return View();
+    }
+  
+  
   
   }
 }
