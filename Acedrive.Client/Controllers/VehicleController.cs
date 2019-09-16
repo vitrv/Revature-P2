@@ -26,6 +26,7 @@ namespace Acedrive.Client.Controllers
         //add code to save selected vehicle type to db
         
         var result = _session.SelectedVehicleType(vtid);
+        _session.AddVehicleType(result);
         //return Content($"You ordered a {result.VehicleTypeName} which will be {result.VehicleTypeCostPerDay} per Day. Is this correct?");
         return RedirectToAction("VehicleSelection", new { vtid = result.VehicleTypeId, vtype = result.VehicleTypeName});
       }
@@ -54,11 +55,11 @@ namespace Acedrive.Client.Controllers
         var loc = _session.ReadLocation();
         var stime = _session.ReadTime("start");
         var etime = _session.ReadTime("end");
-        return Content($"You ordered a {vt.VehicleTypeName} which will be {vt.VehicleTypeCostPerDay} per Day. " +
-                        $"Your selected vehicle is a {result.Year} {result.Manufacturer} {result.Model} from " +
-                        $"{loc.LocationAddress}, {loc.LocationCity}, {loc.LocationState}, {loc.LocationZipcode} for " +
-                        $"the time period of: {stime} - {etime}. Is this correct?");
-        //return RedirectToAction("EnterPaymentInfo", "Payment");
+        //return Content($"You ordered a {vt.VehicleTypeName} which will be {vt.VehicleTypeCostPerDay} per Day. " +
+                        //$"Your selected vehicle is a {result.Year} {result.Manufacturer} {result.Model} from " +
+                        //$"{loc.LocationAddress}, {loc.LocationCity}, {loc.LocationState}, {loc.LocationZipcode} for " +
+                        //$"the time period of: {stime} - {etime}. Is this correct?");
+        return RedirectToAction("DisplayRentalDetails", "Rental");
       }
       return View();
     }

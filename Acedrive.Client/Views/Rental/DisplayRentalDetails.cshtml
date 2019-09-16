@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Review Rental Order";
+}
+
+@model Acedrive.Client.Models.RentalOrderViewModel
+
+<form asp-controller="Rental" asp-action="DisplayRentalDetails" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Rental Order Details</h5><br>
+
+  <table class = "table table-bordered text-center" >
+    <tbody>
+      <tr>
+        <th class = "table-dark">Start Date</th>
+        <td>@Model.StartDate</td>
+      </tr>
+      <tr>
+        <th class = "table-dark">End Date</th>
+        <td>@Model.EndDate</td>
+      </tr>
+      <tr>
+        <th class = "table-dark">Store Location</th>
+        <td>@Model.StoreLocation</td>
+      </tr>
+      <tr>
+        <th class = "table-dark">Vehicle Type</th>
+        <td>@Model.VehicleType</td>
+      </tr>
+      <tr>
+        <th class = "table-dark">Cost Per Day (For Vehicle Type)</th>
+        <td>@Model.VehicleTypeCostPerDay</td>
+      </tr>
+      <tr>
+        <th class = "table-dark">Vehicle Manufacturer</th>
+        <td>@Model.VehicleManufacturer</td>
+      </tr>
+      <tr>
+        <th class = "table-dark">Vehicle Model</th>
+        <td>@Model.VehicleModel</td>
+      </tr>
+      <tr>
+        <th class = "table-dark">Vehicle Year</th>
+        <td>@Model.VehicleYear</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Once you confirm all the information above is correct, click "Continue to Checkout".</p>
+  <button type="submit" value="true">Continue to Checkout</button>
+  
+</form>
