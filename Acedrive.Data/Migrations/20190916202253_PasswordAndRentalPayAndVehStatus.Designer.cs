@@ -4,14 +4,16 @@ using Acedrive.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Acedrive.Data.Migrations
 {
     [DbContext(typeof(AcedriveDbContext))]
-    partial class AcedriveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190916202253_PasswordAndRentalPayAndVehStatus")]
+    partial class PasswordAndRentalPayAndVehStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,8 +115,7 @@ namespace Acedrive.Data.Migrations
 
                     b.Property<string>("UserEmail");
 
-                    b.Property<string>("UserPassword")
-                        .HasMaxLength(15);
+                    b.Property<string>("UserPassword");
 
                     b.Property<string>("UserPhoneNumber");
 
