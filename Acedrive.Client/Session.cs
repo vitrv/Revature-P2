@@ -42,7 +42,7 @@ namespace Acedrive.Client
     Rental _rental;
     string _startdateformat;
     string _enddateformat;
-    
+    decimal _payment;
     internal void AddLocation(Location location)
     {
       _location = location;
@@ -95,10 +95,14 @@ namespace Acedrive.Client
     {
       return _rental;
     }
-
-    public Rental ConfirmRental()
+    internal void AddPayment(decimal payment)
     {
-      return null;
+      _payment = payment;
+    }
+
+    internal decimal ReadPayment()
+    {
+      return _payment;
     }
 
     internal List<Vehicle> GetVehicles(int id)
@@ -114,6 +118,11 @@ namespace Acedrive.Client
     internal List<Location> GetLocations()
     {
       return _data.GetAllLocations();
+    }
+
+    internal bool ValidateUser(string email, string password) {
+      bool usercheck = _data.ValidateUserEmail(email) && _data.ValidateUserPassword(password);
+      return usercheck;
     }
 
     internal void SaveNewUser(User u) {
@@ -150,16 +159,10 @@ namespace Acedrive.Client
       return _user;
     }
 
-    public bool LoginUser(User u)
-    {
-      return 
+    internal void LoginUser(User u) {
+      _user = u;
     }
 
-    public void LogoutUser()
-    {
-      _user = null;
-    }
-    
     public void SelectVehicle(Vehicle v)
     {
       _vehicle = v;
@@ -184,6 +187,7 @@ namespace Acedrive.Client
       Payment result = new Payment();
       result.PaymentDate = _start;
       result.PaymentAmount = ComputeCost(_user.IsInsured, rentalLength.Days, _vehicle.VehTypeId);
+      _payment = result.PaymentAmount;
       return result;
     }
 
