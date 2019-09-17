@@ -15,8 +15,6 @@ namespace Acedrive.Client.Controllers
       Session _session = SessionHandler.Instance();
       public IActionResult Index()
       {
-        //retrieve list of all cars in db with
-        List<VehicleType> vehicles = _session.GetVehicleTypes();
           return View();
       }
 

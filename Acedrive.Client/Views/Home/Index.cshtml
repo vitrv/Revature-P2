@@ -1,7 +1,19 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
+  Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Become an Ace Driver!</h1>
+    <p>Become an Ace Driver!</p>
+</div>
+
+<div class="form-actions">
+  <form asp-controller="User" asp-action="UserRegistration" method="get">
+    <button type="submit" class="btn btn-default btn-lg">User Login</button>
+  </form>
+</div>
+<div class="form-actions">
+  <form asp-controller="Admin" asp-action="ViewVehicles" method="get">
+    <button type="submit" class="btn btn-default btn-lg">Admin Login</button>
+  </form>
 </div>
