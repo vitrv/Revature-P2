@@ -121,7 +121,7 @@ namespace Acedrive.Client.Controllers {
         } else if (decision == "userportal") {
           return RedirectToAction("UserPortal", "User");
         } else if (decision == "logout") {
-          return RedirectToAction("UserLogout", "User");
+          return RedirectToAction("Index", "Home");
         }
       }
       return View();

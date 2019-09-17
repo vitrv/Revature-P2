@@ -30,7 +30,7 @@ namespace Acedrive.Client.Controllers {
       return View();
     }
 
-    // GET: /User/UserRegistration
+    // GET: /User/UserLogin
     [HttpGet]
     public IActionResult UserLogin()
     {
@@ -45,9 +45,10 @@ namespace Acedrive.Client.Controllers {
       if (ModelState.IsValid) {
         bool doesuserexist = _session.ValidateUser(email, password);
         if (doesuserexist == true) {
-          return RedirectToAction("RentalPeriodSelection", "Rental");
+          _session.GetUserInfo(email, password);
+          return RedirectToAction("UserPortal");
         } else {
-          return RedirectToAction("UnsuccessfulLogin", "User");
+          return RedirectToAction("UnsuccessfulLogin");
         }
       }
       return View();
@@ -78,9 +79,13 @@ namespace Acedrive.Client.Controllers {
 
     // GET: /User/UserRentalHistory
     [HttpGet]
-    public IActionResult UserRentalHistory()
+    public IActionResult UserRentalHistory(string email, string password)
     {
       UserRentalHistoryViewModel urhistory = new UserRentalHistoryViewModel();
+      if (email != null && password != null) {
+        _session.GetUserInfo(email, password);
+      } 
+      
       urhistory.DisplayNameofUser(_session.ReadUser().FirstName);
       urhistory.DisplayRentalDates(_session.ReadTime("start"), _session.ReadTime("end"), _session.ReadTime("payment"));
       urhistory.DisplayStoreLocation(_session.ReadLocation());
@@ -95,12 +100,37 @@ namespace Acedrive.Client.Controllers {
     {
       if (ModelState.IsValid) {
         if (decision == "userportal") {
-          return RedirectToAction("UserPortal", "User");
+          return RedirectToAction("UserPortal");
         } else if (decision == "logout") {
-          return RedirectToAction("UserLogout", "User");
+          return RedirectToAction("Index", "Home");
         }
       }
       return View();
     }
+
+    // GET: /User/UserPortal
+    [HttpGet]
+    public IActionResult UserPortal()
+    {
+      ViewBag.Name = _session.ReadUser().FirstName;
+      return View();
+    }
+
+    // POST: /User/UserPortal
+    [HttpPost]
+    public IActionResult UserPortal(string decision)
+    {
+      if (ModelState.IsValid) {
+        if (decision == "newrental") {
+          return RedirectToAction("RentalPeriodSelection", "Rental");
+        } else if (decision == "userhistory") {
+          return RedirectToAction("UserRentalHistory");
+        } else if (decision == "logout") {
+          return RedirectToAction("Index", "Home");
+        }
+      }
+      return View();
+    }
+
   }
 }

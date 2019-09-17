@@ -46,6 +46,48 @@ namespace Acedrive.Client
       _db.SaveChanges();
     }
 
+    internal User FindUser(string email, string password)
+    {
+      List<User> users = _db.Users.ToList();
+      User returninguser = users.Where(u => u.UserEmail == email).Where(u => u.UserPassword == password).SingleOrDefault();
+      return returninguser;
+    }
+    
+    internal Rental FindUserRental(string email, string password)
+    {
+      User u = FindUser(email, password);
+      List<Rental> rentals = _db.Rentals.ToList();
+      Rental userrental = rentals.Where(r => r.UserRefId == u.UserId).LastOrDefault();
+      return userrental;
+    }
+
+    internal Location FindUserLocation(string email, string password)
+    {
+      User u = FindUser(email, password);
+      Rental r = FindUserRental(email, password);
+      List<Location> locations = _db.Locations.ToList();
+      Location userlocation = locations.Where(l => l.LocationId == r.LocationRefId).SingleOrDefault();
+      return userlocation;
+    }
+
+    internal Vehicle FindUserVehicle(string email, string password)
+    {
+      User u = FindUser(email, password);
+      Rental r = FindUserRental(email, password);
+      List<Vehicle> vehicles = _db.Vehicles.ToList();
+      Vehicle uservehicle = vehicles.Where(v => v.VehicleId == r.VehicleRefId).SingleOrDefault();
+      return uservehicle;
+    }
+
+    internal Payment FindUserPayment(string email, string password)
+    {
+      User u = FindUser(email, password);
+      Rental r = FindUserRental(email, password);
+      List<Payment> payments = _db.Payments.ToList();
+      Payment userpayment = payments.Where(p => p.RentalRefId == r.RentalId).SingleOrDefault();
+      return userpayment;
+    }
+
     internal List<Vehicle> GetAllVehicles(int id)
     {
       return _db.Vehicles.Where(v => v.VehicleTypeRefId == id).ToList();

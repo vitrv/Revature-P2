@@ -154,6 +154,16 @@ namespace Acedrive.Client
       return _data.LocationSelector(id);
     }
 
+    internal void GetUserInfo(string email, string password) {
+      _user = _data.FindUser(email, password);
+      _paymentdateformat = _data.FindUserPayment(email, password).PaymentDate.ToString("D");
+      _startdateformat = _data.FindUserRental(email, password).StartDate.ToString("D");
+      _enddateformat = _data.FindUserRental(email, password).EndDate.ToString("D");
+      _location = _data.FindUserLocation(email, password);
+      _vehicle = _data.FindUserVehicle(email, password);
+      _payment = _data.FindUserPayment(email, password).PaymentAmount;
+    }
+
     //Laura's Methods
     internal void RegisterUser(User u)
     {
