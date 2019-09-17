@@ -179,6 +179,26 @@ namespace Acedrive.Client.Controllers
     }
 
     [HttpGet]
+    public IActionResult AdminSecretCode()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult AdminSecretCode(string secretcode)
+    {
+      if (ModelState.IsValid) {
+        if (secretcode == "E5HL4A1T6I5M4") {
+          return RedirectToAction("AdminPortal");
+        } else {
+          return RedirectToAction("IncorrectCode");
+        }
+      }
+      return View();
+    }
+
+    [HttpGet]
     public IActionResult AdminPortal()
     {
       return View();
@@ -207,6 +227,26 @@ namespace Acedrive.Client.Controllers
       }
       
       return View();  
+    }
+
+    [HttpGet]
+    public IActionResult IncorrectCode()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public IActionResult IncorrectCode(string decision)
+    {
+      if (ModelState.IsValid) {
+        if (decision == "secretcode") {
+          return RedirectToAction("AdminSecretCode");
+        } else if (decision == "gohome") {
+          return RedirectToAction("Index", "Home");
+        }
+      }
+
+      return View();
     }
   }
 }

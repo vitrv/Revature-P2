@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Secret Code Issue";
+}
+
+<form asp-controller="Admin" asp-action="IncorrectCode" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Sorry, The Code You Entered is Incorrect.</h5><br>
+  <h6>Please Choose How You Want To Proceed.</h6><br>
+
+  <table class = "table table-bordered text-center">
+    <tbody>
+
+      <tr>
+        <th class="table-dark">Retry Enter Secret Code</th>
+        <td>
+          <button type="submit" name="decision" value="secretcode">Click Here</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Back to Home Page</th>
+        <td>
+          <button type="submit" name="decision" value="gohome">Click Here</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  
+</form>
