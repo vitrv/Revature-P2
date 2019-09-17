@@ -10,7 +10,11 @@
   <h5>Please Enter Your Account Information.</h5><br>
 
   <table class = "table table-bordered text-center">
-    <tbody>  
+    <tbody>
+      <tr>
+        <th colspan="2" class="table-primary">Profile Information</th>
+      <tr>
+
       <tr>
         <th class="table-dark">First Name</th>
         <td>
@@ -107,30 +111,9 @@
       </tr>
 
       <tr>
-        <th class="table-dark">Driver License Number</th>
-        <td>
-          <input type="text" name="UserDriverLicense" pattern="[0-9A-Z]+" value="@Model.UserDriverLicense" required>
-        </td>
-      </tr>
-
-      <tr>
         <th class="table-dark">Date of Birth</th>
         <td>
           <input type="date" name="UserDOB" value="@Model.UserDOB" required>
-        </td>
-      </tr>
-
-      <tr>
-        <th class="table-dark">Email Address</th>
-        <td>
-          <input type="email" name="UserEmail" value="@Model.UserEmail" required>
-        </td>
-      </tr>
-
-      <tr>
-        <th class="table-dark">Phone Number</th>
-        <td>
-          <input type="tel" name="UserPhoneNumber" pattern="([0-9]{3}[-])([0-9]{3}[-])([0-9]{4})" value="@Model.UserPhoneNumber" required>
         </td>
       </tr>
 
@@ -142,6 +125,38 @@
 	          <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th colspan="2" class="table-primary">Login Information</th>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Email Address</th>
+        <td>
+          <input type="email" name="UserEmail" value="@Model.UserEmail" required>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Password</th>
+        <td>
+          <input type="password" name="UserPassword" minlength=6 pattern="[0-9A-Za-z]+" value="@Model.UserPassword" required>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Phone Number</th>
+        <td>
+          <input type="tel" name="UserPhoneNumber" pattern="([0-9]{3}[-])([0-9]{3}[-])([0-9]{4})" value="@Model.UserPhoneNumber" required>
+        </td>
+      </tr>
+      
+      <tr>
+        <th class="table-dark">Driver License Number</th>
+        <td>
+          <input type="text" name="UserDriverLicense" pattern="[0-9A-Z]+" value="@Model.UserDriverLicense" required>
         </td>
       </tr>
 

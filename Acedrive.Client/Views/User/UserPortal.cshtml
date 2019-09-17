@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "User Portal";
+}
+
+<form asp-controller="User" asp-action="UserPortal" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Welcome @ViewBag.Name, Please Choose How You Would Like to Proceed.</h5><br>
+
+  <table class = "table table-bordered text-center">
+    <tbody>
+
+      <tr>
+        <th class="table-dark">Create New Rental</th>
+        <td>
+          <button name="decision" type="submit" value="newrental">Click Here</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">View Your Most Recent Rental</th>
+        <td>
+          <button name="decision" type="submit" value="userhistory">Click Here</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Logout</th>
+        <td>
+          <button name="decision" type="submit" value="logout">Click Here</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  
+</form>

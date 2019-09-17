@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Login Issue";
+}
+
+<form asp-controller="User" asp-action="UnsuccessfulLogin" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Email or Password Does Not Exist in Our Records.</h5><br>
+  <h6>Please Choose How You Want To Proceed.</h6><br>
+
+  <table class = "table table-bordered text-center">
+    <tbody>
+
+      <tr>
+        <th class="table-dark">Retry Login</th>
+        <td>
+          <button name="decision" type="submit" value="login">Click Here</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Create New Account</th>
+        <td>
+          <button name="decision" type="submit" value="signup">Click Here</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Back to Home Page</th>
+        <td>
+          <button name="decision" type="submit" value="gohome">Click Here</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  
+</form>

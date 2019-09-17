@@ -1,0 +1,70 @@
+@{
+    ViewData["Title"] = "Review Rental Order";
+}
+
+@model Acedrive.Client.Models.UserRentalHistoryViewModel
+
+<form asp-controller="User" asp-action="UserRentalHistory" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Hello @Model.NameofUser, Here's Your Most Recent Rental.</h5><br>
+
+  <table class = "table table-bordered text-center" >
+    <tbody>
+      
+      <tr>
+        <th class = "table-dark">Payment Date</th>
+        <td>@Model.PaymentDate</td>
+      </tr>
+
+      <tr>
+        <th class = "table-dark">Amount Paid</th>
+        <td>@Model.AmountPaid</td>
+      </tr>
+
+      <tr>
+        <th class = "table-dark">Start Date</th>
+        <td>@Model.StartDate</td>
+      </tr>
+
+      <tr>
+        <th class = "table-dark">End Date</th>
+        <td>@Model.EndDate</td>
+      </tr>
+
+      <tr>
+        <th class = "table-dark">Store Location</th>
+        <td>@Model.StoreLocation</td>
+      </tr>
+
+      <tr>
+        <th class = "table-dark">Vehicle Type</th>
+        <td>@Model.RentedVehicle</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <br><h6>Please Choose How You Want To Proceed.</h6><br>
+
+  <table class = "table table-bordered text-center">
+    <tbody>
+
+      <tr>
+        <th class="table-dark">Back to User Portal</th>
+        <td>
+          <button name="decision" type="submit" value="userportal">Click Here</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Logout</th>
+        <td>
+          <button name="decision" type="submit" value="logout">Click Here</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  
+</form>

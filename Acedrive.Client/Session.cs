@@ -42,7 +42,8 @@ namespace Acedrive.Client
     Rental _rental;
     string _startdateformat;
     string _enddateformat;
-    
+    string _paymentdateformat;
+    decimal _payment;
     internal void AddLocation(Location location)
     {
       _location = location;
@@ -101,8 +102,12 @@ namespace Acedrive.Client
     internal string ReadTime(string timeselect) {
       if (timeselect == "start") {  
         return _startdateformat;
-      } else {
+      } else if (timeselect == "end") {
         return _enddateformat;
+      } else if (timeselect == "payment") {
+        return _paymentdateformat;
+      } else {
+        return null;
       }
     }
 
@@ -135,7 +140,16 @@ namespace Acedrive.Client
     {
       return _rental;
     }
+    internal void AddPaymentDate(string paymentdate)
+    {
+      _paymentdateformat = paymentdate;
+    }
 
+    internal decimal ReadPayment()
+    {
+      return _payment;
+    }
+    
     internal void DeleteLocation(int lid)
     {
       _data.DeleteLocation(lid);
@@ -143,7 +157,7 @@ namespace Acedrive.Client
 
     public Rental ConfirmRental()
     {
-      return null;
+      return _rental;
     }
 
     internal List<Vehicle> GetVehicles(int id)
@@ -170,6 +184,11 @@ namespace Acedrive.Client
       return _data.GetAllLocations();
     }
 
+    internal bool ValidateUser(string email, string password) {
+      bool usercheck = _data.ValidateUserEmail(email) && _data.ValidateUserPassword(password);
+      return usercheck;
+    }
+
     internal void SaveNewUser(User u) {
       _data.SavetoUsers(u);
     }
@@ -178,6 +197,10 @@ namespace Acedrive.Client
       _data.SavetoRentals(r);
     }
 
+    internal void SavePayment(Payment p) {
+      _data.SavetoPayments(p);
+    }
+    
     internal Vehicle SelectedVehicle(int id) {
       return _data.VehicleSelector(id);
     }
@@ -190,6 +213,16 @@ namespace Acedrive.Client
       return _data.LocationSelector(id);
     }
 
+    internal void GetUserInfo(string email, string password) {
+      _user = _data.FindUser(email, password);
+      _paymentdateformat = _data.FindUserPayment(email, password).PaymentDate.ToString("D");
+      _startdateformat = _data.FindUserRental(email, password).StartDate.ToString("D");
+      _enddateformat = _data.FindUserRental(email, password).EndDate.ToString("D");
+      _location = _data.FindUserLocation(email, password);
+      _vehicle = _data.FindUserVehicle(email, password);
+      _payment = _data.FindUserPayment(email, password).PaymentAmount;
+    }
+
     //Laura's Methods
     internal void RegisterUser(User u)
     {
@@ -200,16 +233,10 @@ namespace Acedrive.Client
       return _user;
     }
 
-    public void LoginUser(User u)
-    {
+    public void LoginUser(User u) {
       _user = u;
     }
 
-    public void LogoutUser()
-    {
-      _user = null;
-    }
-    
     public void SelectVehicle(Vehicle v)
     {
       _vehicle = v;
@@ -234,6 +261,7 @@ namespace Acedrive.Client
       Payment result = new Payment();
       result.PaymentDate = _start;
       result.PaymentAmount = ComputeCost(_user.IsInsured, rentalLength.Days, _vehicle.VehTypeId);
+      _payment = result.PaymentAmount;
       return result;
     }
 

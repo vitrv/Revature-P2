@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Login Issue";
+}
+
+<form asp-controller="Rental" asp-action="AfterPaymentAction" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Thank You! Your Rental Order Was Successful!</h5><br>
+  <h6>Please Choose How You Want To Proceed.</h6><br>
+
+  <table class = "table table-bordered text-center">
+    <tbody>
+
+      <tr>
+        <th class="table-dark">Rent Another Vehicle</th>
+        <td>
+          <button name="decision" type="submit" value="anotherrental">Click Here</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">View Your Most Recent Rental</th>
+        <td>
+          <button name="decision" type="submit" value="viewhistory">Click Here</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Back to User Portal</th>
+        <td>
+          <button name="decision" type="submit" value="userportal">Click Here</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-dark">Logout</th>
+        <td>
+          <button name="decision" type="submit" value="logout">Click Here</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  
+</form>
