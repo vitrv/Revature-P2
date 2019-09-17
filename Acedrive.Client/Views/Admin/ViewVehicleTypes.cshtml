@@ -3,8 +3,8 @@
  <table class = "table table-bordered text-center" >
     <thead class = "thead-dark">
       <tr>
-        <th>Vehicle Id</th>
-        <th>Vehicle Type</th>
+        <th>Vehicle Type Id</th>
+        <th>Vehicle Type Name</th>
         <th>Price (Charged Per Day)</th>
       </tr>
     </thead>
@@ -15,6 +15,16 @@
           <td>@item.VehicleTypeId</td>
           <td>@item.VehicleTypeName</td>
           <td>$@item.VehicleTypeCostPerDay</td>
+          <td>
+            <form asp-controller="Admin" asp-action="UpdateVehicleType" method="get">
+              <button type="submit" name="vtid" value="@item.VehicleTypeId">Update</button>
+            </form>
+          </td>
+          <td>
+            <form asp-controller="Admin" asp-action="DeleteVehicleType" method="get">
+              <button type="submit" name="vtid" value="@item.VehicleTypeId">Delete</button>
+            </form>
+          </td>
         </tr>
       }
     </tbody>

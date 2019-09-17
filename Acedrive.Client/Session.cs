@@ -49,9 +49,19 @@ namespace Acedrive.Client
       _location = location;
     }
 
+    internal void UpdateVehicleType(VehicleType vt)
+    {
+      _data.UpdateVehicleType(vt);
+    }
+
     internal Location ReadLocation()
     {
       return _location;
+    }
+
+    internal void DeleteVehicleType(int vtid)
+    {
+      _data.DeleteVehicleType(vtid);
     }
 
     internal void AddVehicleType(VehicleType vehicletype)
@@ -74,11 +84,21 @@ namespace Acedrive.Client
       return _vehicle;
     }
 
+    internal Vehicle GetVehicle(int vid)
+    {
+      return _data.VehicleSelector(vid);
+    }
+
     internal void AddTime(string start, string end) {
       _startdateformat = start;
       _enddateformat = end;
     }
-    
+
+    internal void UpdateVehicle(Vehicle v)
+    {
+      _data.UpdateVehicle(v);
+    }
+
     internal string ReadTime(string timeselect) {
       if (timeselect == "start") {  
         return _startdateformat;
@@ -91,9 +111,29 @@ namespace Acedrive.Client
       }
     }
 
+    internal void DeleteVehicle(int vid)
+    {
+      _data.DeleteVehicle(vid);
+    }
+
+    internal void RegisterVehicle(Vehicle v)
+    {
+      _data.RegisterVehicle(v);
+    }
+
     internal void AddRental(Rental rental)
     {
       _rental = rental;
+    }
+
+    internal Location GetLocation(int lid)
+    {
+      return _data.LocationSelector(lid);
+    }
+
+    internal void UpdateLocation(Location l)
+    {
+      _data.UpdateLocation(l);
     }
 
     internal Rental ReadRental()
@@ -109,15 +149,34 @@ namespace Acedrive.Client
     {
       return _payment;
     }
+    
+    internal void DeleteLocation(int lid)
+    {
+      _data.DeleteLocation(lid);
+    }
+
+    public Rental ConfirmRental()
+    {
+      return _rental;
+    }
 
     internal List<Vehicle> GetVehicles(int id)
     {
       return _data.GetAllVehicles(id);
     }
 
+    internal void RegisterLocation(Location l)
+    {
+      _data.RegisterLocation(l);
+    }
+
     internal List<VehicleType> GetVehicleTypes()
     {
       return _data.GetAllVehicleTypes();
+    }
+    internal VehicleType GetVehicleType(int vtid)
+    {
+      return _data.VehicleTypeSelector(vtid);
     }
 
     internal List<Location> GetLocations()
@@ -183,9 +242,9 @@ namespace Acedrive.Client
       _vehicle = v;
     }
     
-    public void RegisterVehicleType()
+    public void RegisterVehicleType(VehicleType vt)
     {
-      Domain.Models.VehicleType vt = new Domain.Models.VehicleType();
+      _data.RegisterVehicleType(vt);
     }
     
     public Payment GetRentalPayment()
@@ -223,6 +282,10 @@ namespace Acedrive.Client
       _end = e;
     }
 
+    internal List<Vehicle> GetVehicles()
+    {
+      return _data.GetAllVehicles();
+    }  
     internal DateTime ReadStartDate() {
       return _start;
     }

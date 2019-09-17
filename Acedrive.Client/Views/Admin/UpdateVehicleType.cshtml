@@ -1,0 +1,18 @@
+@model Acedrive.Domain.Models.VehicleType;
+
+<form asp-controller="Admin" asp-action="UpdateVehicleType" method="post">
+  @Html.AntiForgeryToken()
+  <table class = "table table-bordered text-center">
+    <input type="hidden" name="VehicleTypeId" pattern="[0-9]+" value="@Model.VehicleTypeId">
+    <tbody>  
+      <tr>
+        <th class="table-dark">VehicleType Name</th>
+        <td><input type="text" name="VehicleTypeName" pattern="[A-Za-z]+" value="@Model.VehicleTypeName" required></td>
+      </tr>
+      <tr>
+        <th class="table-dark">Cost Per Day</th>
+        <td><input type="text" name="VehicleTypeCostPerDay" pattern="[0-9]+.[0-9]*" value="@Model.VehicleTypeCostPerDay" required></td>
+      </tr>
+  </table>
+  <button type="submit">Update</button>
+</form>

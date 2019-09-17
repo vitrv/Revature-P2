@@ -1,0 +1,36 @@
+@model List<Acedrive.Domain.Models.Vehicle>
+
+ <table class = "table table-bordered text-center" >
+    <thead class = "thead-dark">
+      <tr>
+        <th>Vehicle Id</th>
+        <th>Manufacturer</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>License Plate</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      @foreach (var item in Model) {
+        <tr>
+          <td>@item.VehicleId</td>
+          <td>@item.VehicleTypeRefId</td>
+          <td>@item.Manufacturer</td>
+          <td>@item.Model</td>
+          <td>@item.Year</td>
+          <td>@item.VehicleLicensePlate</td>
+          <td>
+            <form asp-controller="Admin" asp-action="UpdateVehicle" method="get">
+              <button type="submit" name="vid" value="@item.VehicleId">Update</button>
+            </form>
+          </td>
+          <td>
+            <form asp-controller="Admin" asp-action="DeleteVehicle" method="get">
+              <button type="submit" name="vid" value="@item.VehicleId">Delete</button>
+            </form>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
