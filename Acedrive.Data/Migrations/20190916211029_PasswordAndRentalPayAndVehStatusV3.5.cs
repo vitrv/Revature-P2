@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Acedrive.Data.Migrations
 {
-    public partial class timeAddedtoPayment : Migration
+    public partial class PasswordAndRentalPayAndVehStatusV35 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,6 +39,7 @@ namespace Acedrive.Data.Migrations
                     UserDriverLicense = table.Column<string>(nullable: true),
                     UserDOB = table.Column<DateTime>(type: "date", nullable: false),
                     UserEmail = table.Column<string>(nullable: true),
+                    UserPassword = table.Column<string>(maxLength: 15, nullable: true),
                     UserPhoneNumber = table.Column<string>(nullable: true),
                     IsInsured = table.Column<bool>(nullable: false)
                 },
@@ -95,7 +96,8 @@ namespace Acedrive.Data.Migrations
                     UserRefId = table.Column<int>(nullable: false),
                     LocationRefId = table.Column<int>(nullable: false),
                     VehicleRefId = table.Column<int>(nullable: false),
-                    VehicleStatus = table.Column<string>(maxLength: 1, nullable: true)
+                    VehicleStatus = table.Column<bool>(nullable: false),
+                    RentalCost = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
