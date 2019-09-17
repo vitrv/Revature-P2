@@ -43,8 +43,8 @@ namespace Acedrive.Client.Controllers {
     public IActionResult UserLogin(string email, string password)
     {
       if (ModelState.IsValid) {
-        bool isemailcorrect = _session.ValidateUser(email, password);
-        if (isemailcorrect == true) {
+        bool doesuserexist = _session.ValidateUser(email, password);
+        if (doesuserexist == true) {
           return RedirectToAction("RentalPeriodSelection", "Rental");
         } else {
           return RedirectToAction("UnsuccessfulLogin", "User");
@@ -76,5 +76,31 @@ namespace Acedrive.Client.Controllers {
       return View();
     }
 
+    // GET: /User/UserRentalHistory
+    [HttpGet]
+    public IActionResult UserRentalHistory()
+    {
+      UserRentalHistoryViewModel urhistory = new UserRentalHistoryViewModel();
+      urhistory.DisplayNameofUser(_session.ReadUser().FirstName);
+      urhistory.DisplayRentalDates(_session.ReadTime("start"), _session.ReadTime("end"), _session.ReadTime("payment"));
+      urhistory.DisplayStoreLocation(_session.ReadLocation());
+      urhistory.DisplayRentedVehicle(_session.ReadVehicle());
+      urhistory.DisplayAmountPaid(_session.ReadPayment());
+      return View(urhistory);
+    }
+
+    // POST: /User/UserRentalHistory
+    [HttpPost]
+    public IActionResult UserRentalHistory(string decision)
+    {
+      if (ModelState.IsValid) {
+        if (decision == "userportal") {
+          return RedirectToAction("UserPortal", "User");
+        } else if (decision == "logout") {
+          return RedirectToAction("UserLogout", "User");
+        }
+      }
+      return View();
+    }
   }
 }

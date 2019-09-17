@@ -94,12 +94,36 @@ namespace Acedrive.Client.Controllers {
           PaymentAmount = _session.ReadPayment()
         };
 
+        _session.AddPaymentDate(validatedpayment.PaymentDate.ToString("D"));
         _session.SavePayment(validatedpayment);
-
-        return Content("Thank You for Renting with Us!");
-        //return RedirectToAction("AfterPaymentAction", "Rental");
+        return RedirectToAction("AfterPaymentAction");
       }
-    
+  
+      return View();
+    }
+
+    // GET: /Rental/AfterPaymentAction
+    [HttpGet]
+    public IActionResult AfterPaymentAction()
+    {
+      return View();
+    }
+
+    // POST: /Rental/AfterPaymentAction
+    [HttpPost]
+    public IActionResult AfterPaymentAction(string decision)
+    {
+      if (ModelState.IsValid) {
+        if (decision == "anotherrental") {
+          return RedirectToAction("RentalPeriodSelection");
+        } else if (decision == "viewhistory") {
+          return RedirectToAction("UserRentalHistory", "User");
+        } else if (decision == "userportal") {
+          return RedirectToAction("UserPortal", "User");
+        } else if (decision == "logout") {
+          return RedirectToAction("UserLogout", "User");
+        }
+      }
       return View();
     }
   }    

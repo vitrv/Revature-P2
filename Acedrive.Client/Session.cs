@@ -42,6 +42,7 @@ namespace Acedrive.Client
     Rental _rental;
     string _startdateformat;
     string _enddateformat;
+    string _paymentdateformat;
     decimal _payment;
     internal void AddLocation(Location location)
     {
@@ -81,8 +82,12 @@ namespace Acedrive.Client
     internal string ReadTime(string timeselect) {
       if (timeselect == "start") {  
         return _startdateformat;
-      } else {
+      } else if (timeselect == "end") {
         return _enddateformat;
+      } else if (timeselect == "payment") {
+        return _paymentdateformat;
+      } else {
+        return null;
       }
     }
 
@@ -95,9 +100,9 @@ namespace Acedrive.Client
     {
       return _rental;
     }
-    internal void AddPayment(decimal payment)
+    internal void AddPaymentDate(string paymentdate)
     {
-      _payment = payment;
+      _paymentdateformat = paymentdate;
     }
 
     internal decimal ReadPayment()

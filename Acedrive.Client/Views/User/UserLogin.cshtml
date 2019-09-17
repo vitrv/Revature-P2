@@ -2,8 +2,6 @@
     ViewData["Title"] = "Login To Your Account";
 }
 
-@model Acedrive.Domain.Models.User
-
 <form asp-controller="User" asp-action="UserLogin" method="post">
   @Html.AntiForgeryToken()
 
@@ -15,14 +13,14 @@
       <tr>
         <th class="table-dark">Email Address</th>
         <td>
-          <input type="email" name="UserEmail" value="@Model.UserEmail" required>
+          <input type="email" name="email" required>
         </td>
       </tr>
 
       <tr>
         <th class="table-dark">Password</th>
         <td>
-          <input type="password" name="UserPassword" minlength=6 pattern="[0-9A-Za-z]+" value="@Model.UserPassword" required>
+          <input type="password" name="password" minlength=6 pattern="[0-9A-Za-z]+" required>
         </td>
       </tr>
 
