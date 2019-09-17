@@ -3,11 +3,13 @@
  <table class = "table table-bordered text-center" >
     <thead class = "thead-dark">
       <tr>
-        <th>Vehicle Id</th>
+        <th>Vehicle ID</th>
+        <th>Vehicle Type ID</th>
         <th>Manufacturer</th>
         <th>Model</th>
         <th>Year</th>
         <th>License Plate</th>
+        <th colspan="2"></th>
       </tr>
     </thead>
     
@@ -32,5 +34,20 @@
           </td>
         </tr>
       }
+    </tbody>
+  </table>
+
+  <br>
+
+  <table class = "table table-bordered text-center">
+    <tbody>
+      <tr colspan="4">
+        <th class="table-dark">Back to Admin Portal</th>
+        <td>
+          <form asp-controller="Admin" asp-action="AdminPortal" method="get">
+            <button type="submit">Click Here</button>
+          </form>
+        </td>
+      </tr>
     </tbody>
   </table>

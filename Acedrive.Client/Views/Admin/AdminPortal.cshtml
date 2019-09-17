@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "Admin Portal";
+}
+
+<form asp-controller="Admin" asp-action="AdminPortal" method="post">
+  @Html.AntiForgeryToken()
+
+  <h5>Welcome Admin, Please Choose How You Would Like to Proceed.</h5><br>
+
+  <table class = "table table-bordered text-center">
+    <tbody>
+      <tr>
+        <th class="table-primary" colspan="4">Locations</th>
+      <tr>
+      <tr>
+        <td>
+          <button name="decision" type="submit" value="viewlocations">View</button>
+        </td>
+        <td>
+          <button name="decision" type="submit" value="addlocation">Add</button>
+        </td>
+      </tr>
+      
+      <tr>
+        <th class="table-primary" colspan="4">Vehicle Types</th>
+      <tr>
+      <tr>
+        <td>
+          <button name="decision" type="submit" value="viewvehicletypes">View</button>
+        </td>
+        <td>
+          <button name="decision" type="submit" value="addvehicletype">Add</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="table-primary" colspan="4">Vehicles</th>
+      <tr>
+      <tr>
+        <td>
+          <button name="decision" type="submit" value="viewvehicles">View</button>
+        </td>
+        <td>
+          <button name="decision" type="submit" value="addvehicle">Add</button>
+        </td>
+      </tr>
+    </tbody>
+  <table>
+  
+  <br>
+
+  <table class = "table table-bordered text-center">
+    <tbody>
+      <tr colspan="4">
+        <th class="table-dark">Logout</th>
+        <td>
+          <button name="decision" type="submit" value="logout">Click Here</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</form>
