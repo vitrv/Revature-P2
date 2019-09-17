@@ -19,6 +19,16 @@
           <td>@item.LocationCity</td>
           <td>@item.LocationState</td>
           <td>@item.LocationZipcode</td>
+          <td>
+            <form asp-controller="Admin" asp-action="UpdateLocation" method="get">
+              <button type="submit" name="lid" value="@item.LocationId">Update</button>
+            </form>
+          </td>
+          <td>
+            <form asp-controller="Admin" asp-action="DeleteLocation" method="get">
+              <button type="submit" name="lid" value="@item.LocationId">Delete</button>
+            </form>
+          </td>
         </tr>
       }
     </tbody>

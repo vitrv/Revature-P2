@@ -15,10 +15,21 @@
       @foreach (var item in Model) {
         <tr>
           <td>@item.VehicleId</td>
+          <td>@item.VehicleTypeRefId</td>
           <td>@item.Manufacturer</td>
           <td>@item.Model</td>
           <td>@item.Year</td>
           <td>@item.VehicleLicensePlate</td>
+          <td>
+            <form asp-controller="Admin" asp-action="UpdateVehicle" method="get">
+              <button type="submit" name="vid" value="@item.VehicleId">Update</button>
+            </form>
+          </td>
+          <td>
+            <form asp-controller="Admin" asp-action="DeleteVehicle" method="get">
+              <button type="submit" name="vid" value="@item.VehicleId">Delete</button>
+            </form>
+          </td>
         </tr>
       }
     </tbody>

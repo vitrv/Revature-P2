@@ -36,57 +36,108 @@ namespace Acedrive.Client.Controllers
     [ValidateAntiForgeryToken]
     public IActionResult UpdateVehicleType(VehicleType vt)
     {
-      _session.UpdateVehicleType(vt);
+      if(ModelState.IsValid)
+      {
+        _session.UpdateVehicleType(vt);
+      }
       return RedirectToAction("ViewVehicleTypes", "Admin");
     }
-    [HttpDelete]
-    public IActionResult DeleteVehicleType()
+
+    [HttpGet]
+    public IActionResult DeleteVehicleType(int vtid)
     {
-
-      return View();
+      _session.DeleteVehicleType(vtid);
+      return RedirectToAction("ViewVehicleTypes", "Admin");
     }
-
 
 
     [HttpGet]
     public IActionResult AddVehicleType()
     {
-
       return View();
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult AddVehicleType(VehicleType vt)
     {
-      
-      return View();
+      if(ModelState.IsValid)
+      {
+        _session.RegisterVehicleType(vt);
+      }
+      return RedirectToAction("ViewVehicleTypes", "Admin");
     }
 
     [HttpGet]
+    public IActionResult UpdateVehicle(int vid)
+    {
+      Vehicle v = _session.GetVehicle(vid);
+      return View(v);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult UpdateVehicle(Vehicle v)
+    {
+      if(ModelState.IsValid)
+        _session.UpdateVehicle(v);
+      return RedirectToAction("ViewVehicles", "Admin");
+    }
     public IActionResult AddVehicle()
     {
 
       return View();
     }
 
-    [HttpPost]
-    public IActionResult AddVehicle(Vehicle v)
+
+    [HttpGet]
+    public IActionResult DeleteVehicle(int vid)
     {
-      
-      return View();
+      _session.DeleteVehicle(vid);
+      return RedirectToAction("ViewVehicles", "Admin");
     }
-        [HttpGet]
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult AddVehicle(Vehicle v)
+    { 
+      if(ModelState.IsValid)
+         _session.RegisterVehicle(v);
+      return RedirectToAction("ViewVehicles", "Admin");
+    }
+    [HttpGet]
+    public IActionResult UpdateLocation(int lid)
+    {
+      Location l = _session.GetLocation(lid);
+      return View(l);
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult UpdateLocation(Location l)
+    {
+      if(ModelState.IsValid)
+        _session.UpdateLocation(l);
+      return RedirectToAction("ViewLocations", "Admin");
+    }
+    [HttpGet]
+    public IActionResult DeleteLocation(int lid)
+    {
+      _session.DeleteLocation(lid);
+      return RedirectToAction("ViewLocations", "Admin");
+    }
+    [HttpGet]
     public IActionResult AddLocation()
     {
-
       return View();
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult AddLocation(Location l)
     {
-      
-      return View();
+      if(ModelState.IsValid)
+        _session.RegisterLocation(l);
+      return RedirectToAction("ViewLocations", "Admin");
     }
   
   

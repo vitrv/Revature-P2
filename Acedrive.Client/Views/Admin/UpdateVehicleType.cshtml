@@ -2,7 +2,6 @@
 
 <form asp-controller="Admin" asp-action="UpdateVehicleType" method="post">
   @Html.AntiForgeryToken()
-  @Model.VehicleTypeId
   <table class = "table table-bordered text-center">
     <input type="hidden" name="VehicleTypeId" pattern="[0-9]+" value="@Model.VehicleTypeId">
     <tbody>  

@@ -1,5 +1,5 @@
 @model List<Acedrive.Domain.Models.VehicleType>
-<form asp-controller="Admin" asp-action="UpdateVehicleType" method="get">
+
  <table class = "table table-bordered text-center" >
     <thead class = "thead-dark">
       <tr>
@@ -15,9 +15,17 @@
           <td>@item.VehicleTypeId</td>
           <td>@item.VehicleTypeName</td>
           <td>$@item.VehicleTypeCostPerDay</td>
-          <td><button type="submit" name="vtid" value="@item.VehicleTypeId">Update</button></td>
+          <td>
+            <form asp-controller="Admin" asp-action="UpdateVehicleType" method="get">
+              <button type="submit" name="vtid" value="@item.VehicleTypeId">Update</button>
+            </form>
+          </td>
+          <td>
+            <form asp-controller="Admin" asp-action="DeleteVehicleType" method="get">
+              <button type="submit" name="vtid" value="@item.VehicleTypeId">Delete</button>
+            </form>
+          </td>
         </tr>
       }
     </tbody>
   </table>
-</form>

@@ -1,0 +1,30 @@
+@model Acedrive.Domain.Models.Vehicle;
+
+<form asp-controller="Admin" asp-action="AddVehicle" method="post">
+  @Html.AntiForgeryToken()
+  <table class = "table table-bordered text-center"> 
+
+      <tr>
+        <th class="table-dark">Manufacturer</th>
+        <td><input type="text" name="Manufacturer" pattern="[A-Za-z|\s]+" required></td>
+      </tr>
+      <tr>
+        <th class="table-dark">Model</th>
+        <td><input type="text" name="Model" pattern="[0-9A-Za-z|\s]+" required></td>
+      </tr>
+      <tr>
+        <th class="table-dark">Year</th>
+        <td><input type="text" name="Year" pattern="[0-9]{4}" required></td>
+      </tr>
+      <tr>
+        <th class="table-dark">License Plate</th>
+        <td><input type="text" name="VehicleLicensePlate" pattern="[0-9A-Za-z]+" required></td>
+      </tr>
+      <tr>
+        <th class="table-dark">Vehicle Type Id</th>
+        <td><input type="text" name="VehicleTypeRefId" pattern="[0-9]+" required></td>
+      </tr>
+
+  </table>
+  <button type="submit">Add</button>
+</form>
